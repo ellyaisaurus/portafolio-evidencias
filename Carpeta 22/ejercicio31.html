@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solstice | Propiedad Vacacional de Lujo</title>
+    
+    <!-- Bootstrap 5.0.2 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    
+    <!-- Fuentes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/ejercicio31.css">
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg navbar-solstice fixed-top">
+        <div class="container">
+            <a class="navbar-brand text-liver d-flex align-items-center font-playfair fs-3" href="#">
+                <i class="fa-solid fa-sun text-sunset me-2"></i> Solstice
+            </a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <i class="fa-solid fa-bars text-liver fs-3"></i>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav align-items-center">
+                    <li class="nav-item"><a class="nav-link" href="#benefits">Beneficios</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#destinations">Destinos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#membership">Membresía</a></li>
+                    <li class="nav-item ms-lg-3">
+                        <div class="cart-icon-wrapper p-2" data-bs-toggle="offcanvas" data-bs-target="#cartOffcanvas">
+                            <i class="fa-solid fa-suitcase text-liver fs-4"></i>
+                            <span id="cart-badge" class="badge-count d-none">0</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <header class="hero-header">
+        <div class="hero-bg"></div>
+        <div class="hero-overlay"></div>
+        <div class="container position-relative z-index-1">
+            <div class="hero-content mx-auto">
+                <span class="text-sunset text-uppercase fw-bold ls-2 mb-2 d-block small">Bienvenido al Paraíso</span>
+                <h1 class="hero-title font-playfair">Redefine tu forma de viajar</h1>
+                <p class="hero-subtitle font-poppins">Propiedades fraccionales de lujo en los destinos más exclusivos del mundo.</p>
+                <div class="d-flex justify-content-center gap-3">
+                    <a href="#destinations" class="btn btn-primary-solstice fw-bold">Ver Propiedades</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- FEATURES -->
+    <section id="benefits" class="section-features">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="font-playfair display-5 text-liver mb-3">La Diferencia Solstice</h2>
+                <p class="text-muted w-75 mx-auto">Más que un tiempo compartido, una llave a un estilo de vida superior.</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="icon-circle">
+                            <i class="fa-solid fa-infinity"></i>
+                        </div>
+                        <h3 class="h4 font-playfair text-liver mb-3">Propiedad Vitalicia</h3>
+                        <p class="text-muted font-poppins">Tu inversión es heredable y segura.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="icon-circle">
+                            <i class="fa-solid fa-globe"></i>
+                        </div>
+                        <h3 class="h4 font-playfair text-liver mb-3">Intercambio Global</h3>
+                        <p class="text-muted font-poppins">Acceso a más de 500 resorts alrededor del mundo.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="icon-circle">
+                            <i class="fa-regular fa-gem"></i>
+                        </div>
+                        <h3 class="h4 font-playfair text-liver mb-3">Lujo Garantizado</h3>
+                        <p class="text-muted font-poppins">Estándares de 5 diamantes en todas nuestras propiedades.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DESTINOS -->
+    <section id="destinations" class="py-5 bg-cream">
+        <div class="container py-5">
+            <h2 class="font-playfair display-5 text-liver mb-5">Destinos Destacados</h2>
+            <div class="row g-4">
+                <div class="col-lg-6">
+                    <div class="destination-card">
+                        <img src="img/ejercicio31_img2.jpg" alt="Riviera Maya" class="destination-img">
+                        <div class="destination-overlay">
+                            <span class="price-tag shadow-sm">$15,000 USD / Fracción</span>
+                            <h3 class="font-playfair mb-1">Riviera Maya, México</h3>
+                            <button class="btn btn-light rounded-pill text-liver fw-bold py-2 w-100 btn-add-cart"
+                                data-id="1" data-title="Riviera Maya - Fracción" data-price="15000" data-img="img/ejercicio31_img2.jpg">
+                                <i class="fa-solid fa-plus me-2 text-burnt"></i> Agregar a mi Maleta
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="destination-card">
+                        <img src="img/ejercicio31_img3.png" alt="Bali" class="destination-img">
+                        <div class="destination-overlay">
+                            <span class="price-tag bg-white text-liver shadow-sm small">$12,500 USD</span>
+                            <h4 class="font-playfair h5">Ubud, Bali</h4>
+                            <button class="btn btn-accent-solstice btn-sm w-100 mt-2 btn-add-cart"
+                                data-id="2" data-title="Ubud Bali - Fracción" data-price="12500" data-img="img/ejercicio31_img3.png">
+                                <i class="fa-solid fa-plus me-1"></i> Agregar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="destination-card">
+                        <img src="img/ejercicio31_img4.png" alt="Santorini" class="destination-img">
+                        <div class="destination-overlay">
+                            <span class="price-tag bg-white text-liver shadow-sm small">$18,000 USD</span>
+                            <h4 class="font-playfair h5">Santorini, Grecia</h4>
+                            <button class="btn btn-accent-solstice btn-sm w-100 mt-2 btn-add-cart"
+                                data-id="3" data-title="Santorini - Fracción" data-price="18000" data-img="img/ejercicio31_img4.png">
+                                <i class="fa-solid fa-plus me-1"></i> Agregar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MEMBERSHIP -->
+    <section id="membership" class="membership-section py-5">
+        <div class="container py-5">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-5 mb-lg-0 order-lg-2">
+                    <img src="img/ejercicio31_img5.png" alt="Lifestyle" class="img-fluid membership-img w-100">
+                </div>
+                <div class="col-lg-6 order-lg-1">
+                    <h2 class="display-4 font-playfair mb-4">Membresía Platinum</h2>
+                    <p class="lead opacity-75 font-poppins mb-4">Acceso prioritario y upgrades automáticos.</p>
+                    <h3 class="text-sunset mb-4 display-6">$5,000 USD <span class="fs-6 text-white opacity-50">/ Anual</span></h3>
+                    <button class="btn btn-primary-solstice bg-sunset text-liver fw-bold btn-add-cart"
+                        data-id="99" data-title="Membresía Platinum" data-price="5000" data-img="img/ejercicio31_img5.png">
+                        Unirse al Club
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container pb-5">
+            <div class="row g-5">
+                <div class="col-lg-4">
+                    <h3 class="font-playfair text-white mb-4"><i class="fa-solid fa-sun text-sunset me-2"></i> Solstice</h3>
+                </div>
+                <div class="col-lg-4 offset-lg-4">
+                    <h5 class="text-sunset font-playfair mb-3">Newsletter</h5>
+                    <div class="input-group">
+                        <input type="text" class="form-control bg-transparent border-secondary text-white" placeholder="Tu correo">
+                        <button class="btn btn-sunset" type="button"><i class="fa-solid fa-paper-plane"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- OFFCANVAS CART -->
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="cartOffcanvas" aria-labelledby="cartOffcanvasLabel">
+        <!-- HEADER CON ALTO CONTRASTE PARA EVITAR CAMUFLAJE -->
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title font-playfair fw-bold" id="cartOffcanvasLabel">
+                <i class="fa-solid fa-passport me-2"></i> Tu Viaje
+            </h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        
+        <div class="offcanvas-body d-flex flex-column">
+            <!-- Items Container -->
+            <div id="cart-items" class="flex-grow-1 overflow-auto pe-2">
+                <!-- JS Inject here -->
+            </div>
+            
+            <!-- Summary -->
+            <div class="mt-4 pt-3 border-top">
+                <div class="d-flex justify-content-between mb-2 small text-muted">
+                    <span>Subtotal</span>
+                    <span id="summary-subtotal">$0</span>
+                </div>
+                <div class="d-flex justify-content-between mb-3 fw-bold text-liver fs-5">
+                    <span class="d-flex align-items-center">
+                        Total (Inc. Imp.) 
+                        <!-- POPOVER DE INFORMACIÓN -->
+                        <i class="fa-solid fa-circle-info ms-2 text-burnt" 
+                           data-bs-toggle="popover" 
+                           data-bs-trigger="hover focus"
+                           title="Desglose de Impuestos" 
+                           data-bs-content="Incluye IVA del 16% y tarifa de servicio hotelero."></i>
+                    </span>
+                    <span id="summary-total">$0</span>
+                </div>
+                <button id="btn-checkout" class="btn btn-primary-solstice w-100 mb-2">Finalizar Reserva</button>
+                <button id="btn-clear" class="btn btn-link text-danger text-decoration-none btn-sm w-100">Vaciar Maleta</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL -->
+    <div class="modal fade" id="checkoutModal" tabindex="-1" aria-hidden="true" data-bs-backdrop="static">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title font-playfair">Finalizar Reserva</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4 bg-cream">
+                    <!-- Paso 1 -->
+                    <div id="step-form">
+                        <form id="payment-form">
+                            <div class="mb-3">
+                                <label class="form-label text-liver small fw-bold">Nombre</label>
+                                <input type="text" class="form-control border-0 shadow-sm" required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label text-liver small fw-bold">Tarjeta</label>
+                                <input type="text" class="form-control border-0 shadow-sm" placeholder="0000 0000 0000 0000" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary-solstice w-100 mt-3">Pagar <span id="modal-total-btn"></span></button>
+                        </form>
+                    </div>
+                    <!-- Paso 2 Loading -->
+                    <div id="step-loading" class="text-center py-5 d-none">
+                        <div class="loading-spinner mb-3"></div>
+                        <p>Procesando...</p>
+                    </div>
+                    <!-- Paso 3 Success -->
+                    <div id="step-success" class="text-center py-4 d-none">
+                        <div class="checkmark-wrapper">
+                            <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+                                <circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none"/>
+                                <path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+                            </svg>
+                        </div>
+                        <h4 class="font-playfair text-liver">¡Pago Exitoso!</h4>
+                        <button class="btn btn-outline-secondary rounded-pill mt-3" data-bs-dismiss="modal">Cerrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TOAST CONTAINER -->
+    <div class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index: 1060;" id="toast-container">
+        <!-- Los toasts se inyectan aquí mediante JS -->
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="js/ejercicio31.js"></script>
+</body>
+</html>

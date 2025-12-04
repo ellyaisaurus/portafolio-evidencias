@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actividad de Selectores</title>
+    <style>
+        .caja {
+            width: 100px;
+            height: 100px;
+            background-color: lightblue;
+            margin: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 id="titulo">Manipulación de DOM</h1>
+    <div class="caja">
+        Caja 1
+    </div>
+    <div class="caja">
+        Caja 2
+    </div>
+    <div class="caja">
+        Caja 3
+    </div>
+    <button id="cambiarColor">Cambiar color de las cajas</button>
+    <button id="restaurarColor">Restaurar color de las cajas</button>
+    <button id="cambiarTexto">Cambiar texto del título</button>
+    <button id="restaurarTexto">Restaurar texto del título</button>
+    <script>
+        document.getElementById("cambiarColor").addEventListener("click", function() {
+            document.querySelectorAll(".caja").forEach(function(caja) {
+                caja.style.backgroundColor = "red"
+                caja.style.color = "white";
+            });
+        });
+        document.getElementById("restaurarColor").addEventListener("click", function() {
+            document.querySelectorAll(".caja").forEach(function(caja) {
+                caja.style.backgroundColor = "lightblue";
+            });
+        });
+        document.getElementById("cambiarTexto").addEventListener("click", function() {
+            document.getElementById("titulo").textContent = "Nuevo texto";
+        });
+        document.getElementById("restaurarTexto").addEventListener("click", function() {
+            document.getElementById("titulo").textContent = "Manipulación de DOM";
+            document.getElementById("titulo").style.color = "black";
+        });
+    </script>
+</body>
+</html>

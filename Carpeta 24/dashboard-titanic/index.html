@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Titanic Analytics | Dashboard Profesional</title>
+    
+    <!-- Bootstrap 5.0.2 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- DataTables CSS (Estilo Bootstrap 5) -->
+    <link href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css" rel="stylesheet">
+    <link href="https://cdn.datatables.net/responsive/2.4.1/css/responsive.bootstrap5.min.css" rel="stylesheet">
+    
+    <!-- Google Fonts (Poppins & Inter) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Poppins:wght@500;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Hoja de Estilos Personalizada -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Overlay de Carga -->
+    <div id="loader-overlay">
+        <div class="spinner-border text-mindaro" role="status" style="width: 3rem; height: 3rem;">
+            <span class="visually-hidden">Cargando...</span>
+        </div>
+        <p class="mt-3 text-white fw-light">Procesando manifiesto de pasajeros...</p>
+    </div>
+
+    <!-- Fondo Dinámico -->
+    <div class="bg-shapes">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+    </div>
+
+    <!-- Navbar Flotante -->
+    <nav class="navbar navbar-expand-lg glass-nav fixed-top my-3 mx-4 rounded-3">
+        <div class="container-fluid">
+            <a class="navbar-brand text-white fw-bold d-flex align-items-center" href="#">
+                <i class="fa-solid fa-ship me-2 icon-brand"></i>
+                TITANIC <span class="fw-light ms-1">INSIGHTS</span>
+            </a>
+            <div class="d-flex align-items-center">
+                <span class="badge glass-badge me-2"><i class="fa-solid fa-database me-1"></i> Data v2.0</span>
+                <button class="btn btn-sm btn-outline-light rounded-circle" onclick="window.location.reload()">
+                    <i class="fa-solid fa-sync-alt"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Contenedor Principal -->
+    <div class="container-fluid main-container pt-5 mt-5">
+        
+        <!-- Header y Filtros Globales -->
+        <div class="row mb-4 animate-up align-items-end">
+            <div class="col-12 col-lg-6">
+                <h1 class="display-5 fw-bold text-white">Tablero de Control</h1>
+                <p class="text-white-50 mb-0">Análisis interactivo de supervivencia y demografía.</p>
+            </div>
+            
+            <!-- Zona de Filtros -->
+            <div class="col-12 col-lg-6 mt-3 mt-lg-0">
+                <div class="glass-card p-3 d-flex flex-wrap gap-3 align-items-center justify-content-lg-end">
+                    <div class="text-white fw-bold me-2"><i class="fa-solid fa-filter me-2 text-mindaro"></i>Filtros:</div>
+                    
+                    <select id="filterSex" class="form-select form-select-sm glass-input w-auto">
+                        <option value="all">Todos los Géneros</option>
+                        <option value="male">Hombres</option>
+                        <option value="female">Mujeres</option>
+                    </select>
+
+                    <select id="filterClass" class="form-select form-select-sm glass-input w-auto">
+                        <option value="all">Todas las Clases</option>
+                        <option value="1">1ª Clase</option>
+                        <option value="2">2ª Clase</option>
+                        <option value="3">3ª Clase</option>
+                    </select>
+                    
+                    <select id="filterSurvived" class="form-select form-select-sm glass-input w-auto">
+                        <option value="all">Todos los Estados</option>
+                        <option value="1">Sobrevivientes</option>
+                        <option value="0">Fallecidos</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- KPIs / Tarjetas Estadísticas -->
+        <div class="row g-4 mb-5" id="kpi-container">
+            <!-- Total Pasajeros -->
+            <div class="col-12 col-md-6 col-lg-3 animate-up delay-1">
+                <div class="glass-card p-4 h-100 d-flex flex-column justify-content-between position-relative overflow-hidden">
+                    <div class="card-icon-bg"><i class="fa-solid fa-users"></i></div>
+                    <div>
+                        <h6 class="text-uppercase text-white-50 fw-bold fs-7">Pasajeros Filtrados</h6>
+                        <h2 class="fw-bold text-white display-5 count-up" id="totalPasajeros">0</h2>
+                    </div>
+                    <div class="progress mt-3 glass-progress">
+                        <div class="progress-bar bg-mindaro" role="progressbar" style="width: 100%"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tasa de Supervivencia -->
+            <div class="col-12 col-md-6 col-lg-3 animate-up delay-2">
+                <div class="glass-card p-4 h-100 d-flex flex-column justify-content-between position-relative overflow-hidden">
+                    <div class="card-icon-bg"><i class="fa-solid fa-heart-pulse"></i></div>
+                    <div>
+                        <h6 class="text-uppercase text-white-50 fw-bold fs-7">Tasa Supervivencia</h6>
+                        <h2 class="fw-bold text-mindaro display-5"><span id="survivalRate">0</span>%</h2>
+                    </div>
+                    <div class="progress mt-3 glass-progress">
+                        <div id="survivalBar" class="progress-bar bg-mindaro" role="progressbar" style="width: 0%"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hombres -->
+            <div class="col-12 col-md-6 col-lg-3 animate-up delay-3">
+                <div class="glass-card p-4 h-100 d-flex flex-column justify-content-between position-relative overflow-hidden">
+                    <div class="card-icon-bg"><i class="fa-solid fa-person"></i></div>
+                    <div>
+                        <h6 class="text-uppercase text-white-50 fw-bold fs-7">Hombres</h6>
+                        <h2 class="fw-bold text-cambridge-blue display-5 count-up" id="totalMen">0</h2>
+                    </div>
+                    <div class="progress mt-3 glass-progress">
+                        <div id="menBar" class="progress-bar bg-cambridge-blue" role="progressbar" style="width: 0%"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mujeres -->
+            <div class="col-12 col-md-6 col-lg-3 animate-up delay-4">
+                <div class="glass-card p-4 h-100 d-flex flex-column justify-content-between position-relative overflow-hidden">
+                    <div class="card-icon-bg"><i class="fa-solid fa-person-dress"></i></div>
+                    <div>
+                        <h6 class="text-uppercase text-white-50 fw-bold fs-7">Mujeres</h6>
+                        <h2 class="fw-bold text-air-force display-5 count-up" id="totalWomen">0</h2>
+                    </div>
+                    <div class="progress mt-3 glass-progress">
+                        <div id="womenBar" class="progress-bar bg-air-force" role="progressbar" style="width: 0%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sección de Gráficas -->
+        <div class="row g-4 mb-5">
+            <!-- Gráfica de Barras -->
+            <div class="col-12 col-lg-8 animate-up delay-5">
+                <div class="glass-card p-4 h-100">
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <h5 class="fw-bold text-white mb-0"><i class="fa-solid fa-chart-bar me-2 text-mindaro"></i>Análisis: Sobrevivientes vs Fallecidos</h5>
+                    </div>
+                    <div class="chart-container" style="position: relative; height:350px; width:100%">
+                        <canvas id="chartSurvivalSex"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gráfica de Pastel -->
+            <div class="col-12 col-lg-4 animate-up delay-6">
+                <div class="glass-card p-4 h-100">
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <h5 class="fw-bold text-white mb-0"><i class="fa-solid fa-chart-pie me-2 text-mindaro"></i>Distribución por Clase</h5>
+                    </div>
+                    <div class="chart-container" style="position: relative; height:300px; width:100%">
+                        <canvas id="chartPclass"></canvas>
+                    </div>
+                    <div class="mt-3 text-center text-white-50 fs-7">
+                        *Datos basados en la selección actual
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Nueva Sección: Tabla Interactiva -->
+        <div class="row mb-5 animate-up delay-6">
+            <div class="col-12">
+                <div class="glass-card p-4">
+                    <h5 class="fw-bold text-white mb-4"><i class="fa-solid fa-list me-2 text-mindaro"></i>Lista Detallada de Pasajeros</h5>
+                    <div class="table-responsive">
+                        <table id="passengersTable" class="table table-borderless text-white align-middle" style="width:100%">
+                            <thead>
+                                <tr class="border-bottom border-secondary">
+                                    <th>ID</th>
+                                    <th>Nombre</th>
+                                    <th>Edad</th>
+                                    <th>Género</th>
+                                    <th>Clase</th>
+                                    <th>Tarifa ($)</th>
+                                    <th>Estado</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- DataTables llenará esto automáticamente -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <footer class="text-center text-white-50 pb-4 fs-7 mt-5">
+            <p>&copy; 2025 Titanic Dashboard Project. Powered by Bootstrap 5, Chart.js & DataTables.</p>
+        </footer>
+
+    </div>
+
+    <!-- Scripts -->
+    <!-- jQuery (Requerido para DataTables) -->
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <!-- Bootstrap Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- DataTables JS -->
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.4.1/js/dataTables.responsive.min.js"></script>
+    
+    <!-- Script Principal -->
+    <script src="script.js"></script>
+</body>
+</html>

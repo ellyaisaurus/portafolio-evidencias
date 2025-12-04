@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Pokédex - Vista Detallada</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Bootstrap 5.0.2 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+  <!-- Estilos propios -->
+  <link rel="stylesheet" href="css/ejercicio27.css">
+</head>
+<body class="bg-pattern">
+
+  <!-- Botón volver estilo Nintendo -->
+  <a href="ejercicio28.html" class="btn-back">
+      <i class="bi bi-arrow-return-left me-2"></i>Volver
+  </a>
+
+  <div class="container py-4">
+    <div class="pokedex-shell mx-auto">
+      
+      <!-- Luces Superiores -->
+      <div class="top-lights d-flex align-items-center mb-3 px-3 pt-2">
+        <div id="light-blue" class="lens lens-large lens-blue me-4 shadow-sm"></div>
+        <div class="d-flex gap-2">
+          <div class="lens lens-small lens-red"></div>
+          <div class="lens lens-small lens-yellow"></div>
+          <div class="lens lens-small lens-green"></div>
+        </div>
+      </div>
+
+      <div class="row g-0">
+        <!-- Panel Izquierdo (Visualizador) -->
+        <div class="col-md-6 p-3 left-panel">
+          <div class="d-flex flex-column h-100">
+            
+            <!-- Pantalla Principal con Marco -->
+            <div class="screen-bezel mb-3">
+              <div class="lcd-screen d-flex flex-column justify-content-center align-items-center position-relative">
+                 <!-- Loader -->
+                 <div id="loading-spinner" class="spinner-border text-secondary d-none" role="status">
+                    <span class="visually-hidden">Cargando...</span>
+                 </div>
+                 
+                 <div id="pokemon-display" class="text-center w-100 fade-in">
+                    <img id="pokemon-image" class="pokemon-sprite mb-2" alt="Pokémon" src="">
+                    <div class="lcd-info-bar">
+                        <span id="pokemon-id" class="fw-bold text-muted me-2"></span>
+                        <span id="pokemon-name" class="fw-bold text-uppercase"></span>
+                    </div>
+                 </div>
+              </div>
+              
+              <div class="d-flex justify-content-between px-4 mt-2">
+                 <div class="speaker-grill"></div>
+                 <div class="red-dot"></div>
+              </div>
+            </div>
+
+            <!-- Panel de Descripción (Estilo Pantalla Secundaria verde) -->
+            <div class="info-screen-green flex-grow-1 mb-3 p-3 border-dark">
+              <p id="pokemon-description" class="mb-2 typing-text">
+                Inicializando base de datos Pokémon...
+              </p>
+              <hr class="border-dark opacity-25 my-2">
+              <div class="d-flex justify-content-between small fw-bold text-dark opacity-75">
+                <span id="pokemon-generation">GEN: --</span>
+                <span id="pokemon-habitat">HÁBITAT: --</span>
+              </div>
+            </div>
+
+            <!-- Controles Físicos -->
+            <div class="mt-auto">
+              <div class="d-flex justify-content-between align-items-center px-2">
+                <button id="btn-cry" class="btn-round-black" title="Reproducir Sonido">
+                  <i class="bi bi-music-note-beamed text-light"></i>
+                </button>
+                
+                <!-- D-PAD -->
+                <div class="d-pad-container">
+                    <button id="btn-prev" class="d-pad-btn d-pad-left" title="Anterior"><i class="bi bi-caret-left-fill"></i></button>
+                    <div class="d-pad-center"></div>
+                    <button id="btn-next" class="d-pad-btn d-pad-right" title="Siguiente"><i class="bi bi-caret-right-fill"></i></button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Tipos -->
+            <div class="mt-3 text-center">
+               <div id="pokemon-types" class="d-flex flex-wrap justify-content-center gap-2"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Panel Derecho (Datos) -->
+        <div class="col-md-6 p-3 right-panel">
+          <div class="d-flex flex-column h-100">
+            
+            <!-- Buscador -->
+            <form id="search-form" class="input-group mb-4 shadow-sm">
+              <input id="search-input" type="text" class="form-control" placeholder="Buscar Pokémon...">
+              <button class="btn btn-primary fw-bold" type="submit">GO</button>
+            </form>
+
+            <!-- Tarjeta de Información -->
+            <div class="info-card flex-fill shadow-sm">
+              <div class="card-body">
+                <h5 class="section-title">Estadísticas Físicas</h5>
+                
+                <div class="row mb-3 text-center bg-light rounded py-2 mx-0 border">
+                  <div class="col-6 border-end">
+                    <small class="text-uppercase text-muted fw-bold" style="font-size: 0.7rem;">Altura</small>
+                    <p class="fw-bold mb-0 text-dark" id="pokemon-height">--</p>
+                  </div>
+                  <div class="col-6">
+                    <small class="text-uppercase text-muted fw-bold" style="font-size: 0.7rem;">Peso</small>
+                    <p class="fw-bold mb-0 text-dark" id="pokemon-weight">--</p>
+                  </div>
+                </div>
+
+                <!-- Sección Habilidades -->
+                <div class="mb-4">
+                  <h5 class="section-title">Habilidades</h5>
+                  <div id="pokemon-abilities" class="d-flex flex-wrap gap-2 mt-2">
+                      <!-- Botones se inyectan aquí -->
+                  </div>
+                  <small class="text-muted fst-italic mt-1 d-block" style="font-size: 0.75rem;">* Click para ver detalle</small>
+                </div>
+
+                <h5 class="section-title">Stats Base</h5>
+                <div id="pokemon-stats" class="small flex-grow-1"></div>
+
+                <button class="btn btn-dark w-100 mt-3 fw-bold shadow-sm" data-bs-toggle="modal" data-bs-target="#spritesModal">
+                  <i class="bi bi-grid-3x3-gap-fill me-2"></i> Ver Formas
+                </button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal de Sprites -->
+  <div class="modal fade" id="spritesModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content border-0">
+        <div class="modal-header bg-danger text-white">
+          <h5 class="modal-title fw-bold">Galería de Sprites</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body bg-light">
+          <div id="sprites-container" class="row text-center g-3"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Detalles Habilidad (Estilo Pokédex UI) -->
+  <div class="modal fade" id="abilityModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content border-0 overflow-hidden" style="border-radius: 15px;">
+        <div class="modal-header bg-primary text-white">
+          <h5 class="modal-title fw-bold text-uppercase" id="ability-name">Nombre Habilidad</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body bg-light">
+             <div class="d-flex justify-content-center mb-3">
+                 <span id="ability-is-hidden" class="badge bg-warning text-dark border border-dark d-none">Habilidad Oculta</span>
+             </div>
+             
+             <div class="p-3 bg-white rounded border shadow-sm mb-3">
+                <h6 class="fw-bold text-primary mb-1">Efecto en batalla:</h6>
+                <p id="ability-effect" class="small mb-0 text-secondary">Cargando...</p>
+             </div>
+
+             <div class="p-3 bg-light rounded border border-dashed">
+                <h6 class="fw-bold text-dark mb-1">Descripción corta:</h6>
+                <p id="ability-short" class="small mb-0 fst-italic">...</p>
+             </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Error -->
+  <div class="toast-container position-fixed bottom-0 end-0 p-3">
+    <div id="error-toast" class="toast align-items-center text-white bg-danger border-0" role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="d-flex">
+        <div class="toast-body fw-bold">
+          <i class="bi bi-x-circle-fill me-2"></i>
+          <span id="error-message">Error.</span>
+        </div>
+        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/ejercicio27.js"></script>
+</body>
+</html>

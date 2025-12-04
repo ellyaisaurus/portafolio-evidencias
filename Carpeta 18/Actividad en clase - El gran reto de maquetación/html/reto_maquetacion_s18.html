@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Sistema Contable · Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- 📌 BOOTSTRAP CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- 🔵 GRIDSTACK CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/gridstack@9.2.0/dist/gridstack.min.css" rel="stylesheet" />
+  <style>
+    body {
+      background-color: #f8f9fa;
+      font-family: "Poppins", sans-serif;
+    }
+    .grid-stack-item-content {
+      background: #fff;
+      border-radius: 8px;
+      padding: 1rem;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.09);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .gs-title {
+      font-weight: bold;
+      margin-top: .5rem;
+      margin-bottom: .5rem;
+    }
+    .card-img {
+      width: 80px;
+      height: auto;
+      margin-bottom: .5rem;
+    }
+  </style>
+</head>
+<body>
+<!-- =======================================================================================
+    HEADER + NAVBAR
+    ======================================================================================= -->
+<header>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-3">
+    <a class="navbar-brand fw-bold" href="#">
+      <img src="img/sistema.png" alt="Logo" height="32" class="me-2">
+      Sistema Contable
+    </a>
+    <!-- Corrige el botón para que apunte al FAQ (offcanvas) -->
+    <button class="btn btn-outline-light ms-auto" type="button" data-bs-toggle="offcanvas" data-bs-target="#faqCanvas" id="sidebarButton">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  </nav>
+</header>
+
+<!-- =======================================================================================
+    OFFCANVAS (MENÚ LATERAL)
+    ======================================================================================= -->
+<div class="offcanvas offcanvas-start" tabindex="-1" id="faqCanvas" aria-labelledby="faqCanvasLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="faqCanvasLabel">Preguntas Frecuentes</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+  </div>
+  <div class="offcanvas-body">
+    <div class="d-grid gap-3">
+      <button class="btn btn-info" data-bs-toggle="modal" data-bs-target="#faq1">¿Cómo muevo una tarjeta?</button>
+      <button class="btn btn-info" data-bs-toggle="modal" data-bs-target="#faq2">¿Puedo cambiar el tamaño de los bloques?</button>
+      <button class="btn btn-info" data-bs-toggle="modal" data-bs-target="#faq3">¿Para qué sirve cada indicador?</button>
+      <button class="btn btn-info" data-bs-toggle="modal" data-bs-target="#faq4">¿Cómo ver los detalles de cada sección?</button>
+      </div>
+  </div>
+</div>
+
+<!-- =======================================================================================
+    MAIN CONTENT
+    ======================================================================================= -->
+<main class="container my-4">
+
+  <!-- =====================================================================================
+      SECCIÓN: TARJETAS (CARDS) DE INDICADORES CONTABLES
+      ===================================================================================== -->
+  <section id="panel">
+    <div class="grid-stack"></div>
+  </section>
+
+  <!-- =====================================================================================
+      SECCIÓN: COLLAPSIBLE
+      ===================================================================================== -->
+<section id="reportes" class="mt-5">
+  <div class="accordion" id="accordionReportes">
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingOne">
+        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+          Ver Reportes Generales
+        </button>
+      </h2>
+      <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne">
+        <div class="accordion-body">
+          <ul>
+            <li>
+              <button class="btn btn-link p-0" style="text-decoration: underline;" data-bs-toggle="modal" data-bs-target="#modalBalance">
+                Balance General anual
+              </button>
+            </li>
+            <li>
+              <button class="btn btn-link p-0" style="text-decoration: underline;" data-bs-toggle="modal" data-bs-target="#modalResultados">
+                Estado de resultados mensual
+              </button>
+            </li>
+            <li>
+              <button class="btn btn-link p-0" style="text-decoration: underline;" data-bs-toggle="modal" data-bs-target="#modalFlujo">
+                Flujo de efectivo proyectado
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- =======================================================================================
+    MODALES (DETALLES CONTABLES)
+    ======================================================================================= -->
+
+    <!-- Preguntas Frecuentes -->
+    <div class="modal fade" id="faq1" tabindex="-1">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">¿Cómo muevo una tarjeta?</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+          </div>
+          <div class="modal-body">Haz clic, mantén presionado y arrastra la tarjeta al lugar que desees dentro del tablero.</div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="faq2" tabindex="-1">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">¿Puedo cambiar el tamaño de los bloques?</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+          </div>
+          <div class="modal-body">Sí. Pasa el mouse por la esquina inferior derecha de una tarjeta y arrástrala para ajustarla.</div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="faq3" tabindex="-1">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">¿Para qué sirve cada indicador?</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+          </div>
+          <div class="modal-body">Cada tarjeta muestra un indicador financiero esencial: Balance General, Resultados, Flujo de Efectivo y KPIs clave.</div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="faq4" tabindex="-1">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header"><h5 class="modal-title">¿Cómo ver los detalles de cada sección?</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+          </div>
+          <div class="modal-body">Haz clic en el botón "Ver detalle" de las tarjetas y se abrirá un modal con la información ampliada.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Balance General -->
+    <div class="modal fade" id="modalBalance" tabindex="-1" aria-labelledby="modalBalanceLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="modalBalanceLabel">Detalle de Balance General</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+          </div>
+      <div class="modal-body">
+        <img src="img/balance.jpeg" alt="Balance General" class="img-fluid mb-3">
+        <ul>
+          <li>Activos Circulantes: $120,000</li>
+          <li>Activos No Circulantes: $80,000</li>
+          <li>Pasivos Corto Plazo: $100,000</li>
+          <li>Pasivos Largo Plazo: $50,000</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Estado de Resultados -->
+<div class="modal fade" id="modalResultados" tabindex="-1" aria-labelledby="modalResultadosLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalResultadosLabel">Detalle de Estado de Resultados</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <img src="img/estado.jpeg" alt="Estado de Resultados" class="img-fluid mb-3">
+        <ul>
+          <li>Ingresos: $65,000</li>
+          <li>Costos: $40,000</li>
+          <li>Gastos de operación: $9,800</li>
+          <li>Utilidad Neta: $15,200</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Flujo de Efectivo -->
+<div class="modal fade" id="modalFlujo" tabindex="-1" aria-labelledby="modalFlujoLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalFlujoLabel">Detalle del Flujo de Efectivo</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <img src="img/flujo.png" alt="Flujo de Efectivo" class="img-fluid mb-3">
+        <ul>
+          <li>Entradas: $18,100</li>
+          <li>Salidas: $11,700</li>
+          <li>Saldo Neto: $6,400</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- =======================================================================================
+    FOOTER
+    ======================================================================================= -->
+<footer class="mt-5 py-4 bg-dark text-center text-white">
+  <small>Sistema Contable &copy; Elian Mejia</small>
+</footer>
+
+<!-- =======================================================================================
+    BOOTSTRAP JS, GRIDSTACK JS & DASHBOARD LOGIC
+    ======================================================================================= -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gridstack@9.2.0/dist/gridstack-all.min.js"></script>
+<script src="js/dashboard.js"></script>
+</body>
+</html>
