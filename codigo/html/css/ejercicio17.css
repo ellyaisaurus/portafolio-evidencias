@@ -1,0 +1,30 @@
+/* Espacio externo a los contenedores para apreciar el fondo */
+.custom-margin {
+    margin: 40px auto;
+    max-width: 90vw;
+}
+
+/* Media Queries para cambiar el color de fondo */
+@media (max-width: 599px) {
+    body {
+        background-color: gray; /* Fondo gris */
+    }
+}
+
+@media (min-width: 600px) and (max-width: 899px) {
+    body {
+        background-color: brown; /* Fondo café */
+    }
+}
+
+@media (min-width: 900px) and (max-width: 1199px) {
+    body {
+        background-color: purple; /* Fondo morado */
+    }
+}
+
+@media (min-width: 1200px) {
+    body {
+        background-color: red; /* Fondo rojo */
+    }
+}

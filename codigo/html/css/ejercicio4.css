@@ -1,0 +1,17 @@
+ul{
+    list-style-type: none;
+}
+
+ol{
+    list-style-type: upper-roman;
+}
+
+table{
+    border-collapse: collapse;
+    width: 100%;
+    border-color: aquamarine;
+}
+td, th{
+    text-align: center;
+    border: 2px solid aquamarine;
+}

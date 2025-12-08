@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<!-- Lenguaje de toda la pagina -->
+<html lang="es">
+    <head>
+        <title>Práctica de Formularios</title>
+        <link rel="stylesheet" href="css/estilo-0.css">
+        <!-- Hoja de estilo de Bootstrap V5.0 -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">"
+        <meta name="description" content="Formularios para practicar con Bootstrap">
+        <meta name="keywords" content="formularios, bootstrap, práctica">
+        <meta name="author" content="Elian Mejia Gallardo">
+        <meta name="copyright" content="Elian Mejia Gallardo">
+        <meta name="application-name" content="Práctica de Formularios">
+        <meta name="generator" content="Visual Studio COde">
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <form>
+
+            <!--Formulario de datos personales-->
+            <fieldset class="border rounded-3 p-3 mb-4 bg-white">
+                <legend class="float-none w-auto px-2">Identificación</legend>
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <label for="nombre" class="form-label">Nombre:</label>
+                        <input type="text" class="form-control" id="nombre" placeholder="Escribe tu nombre" required>
+                        <div class="invalid-feedback">Por favor, ingresa tu nombre.</div>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="apellido" class="form-label">Apellido:</label>
+                        <input type="text" class="form-control" id="apellido" placeholder="Escribe tu apellido" required>
+                        <div class="invalid-feedback">Por favor, ingresa tu apellido.</div>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="email" class="form-label">Correo Electrónico:</label>
+                        <input type="email" class="form-control" id="email" placeholder="nombre@empresa.com" required>
+                        <div class="invalid-feedback">Por favor, ingresa un correo electrónico válido.</div>
+                     </div>
+                    <div class="col-md-6">
+                        <label for="password" class="form-label">Contraseña:</label>
+                        <input type="password" class="form-control" minlength="6" id="password" placeholder="Escribe tu contraseña" required>
+                        <div class="invalid-feedback">Por favor, ingresa una contraseña.</div>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="tel" class="form-label">Teléfono:</label>
+                        <input type="tel" class="form-control" id="tel" placeholder="+52 55 1111 2222" pattern="^\+[1-9]\d{1,14}$" required>
+                        <div class="invalid-feedback">Por favor, ingresa tu número de teléfono.</div>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="url" class="form-label">Sitio Web:</label>
+                        <input type="url" class="form-control" id="url" placeholder="https://www.ejemplo.com" required>
+                        <div class="invalid-feedback">Por favor, ingresa una URL válida.</div>
+                    </div>
+                    </div>
+            </fieldset>
+
+            <!--Selects, múltiples, datalist-->
+            <fieldset class="border rounded-3 p-3 mb-4 bg-white">
+                <legend class="float-none w-auto px-2">Selección</legend>
+                <div class="row g-3"></div>
+                <div class="col-md-4">
+                    <label for="selectSimple" class="form-label">Select simple</label>
+                    <select id="selectSimple" class="form-select">
+                        <option selected disabled>Elige una opción</option>
+                        <option>Opción 1</option>
+                        <option>Opción 2</option>
+                        <option>Opción 3</option>
+                    </select>
+                </div>
+                <div class="col-md-4">
+                    <label for="selectMultiple" class="form-label">Select múltiple</label>
+                    <select id="selectMultiple" class="form-select" multiple>
+                        <option>Opción A</option>
+                        <option>Opción B</option>
+                        <option>Opción C</option>
+                        <option>Opción D</option>
+                    </select>
+                </div>
+                <div class="col-md-4">
+                    <label for="datalistOptions" class="form-label">Datalist</label>
+                    <input class="form-control" list="datalistOptions" id="datalistInput" placeholder="Escribe para buscar...">
+                    <datalist id="datalistOptions">
+                        <option value="Opción 1">
+                        <option value="Opción 2">
+                        <option value="Opción 3">
+                        <option value="Opción 4">
+                    </datalist>
+                </div>
+            </fieldset>
+
+            <!--Checks, radios y switches-->
+            <fieldset class="border rounded-3 p-3 mb-4 bg-white">
+                <legend class="float-none w-auto px-2">Checkboxes</legend>
+                <div class="row g-3">
+                    <div class="col-md-4">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="check1">
+                            <label class="form-check-label" for="check1">
+                                Opción de Check 1
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="check2">
+                            <label class="form-check-label" for="check2">
+                                Opción de <a href="https://terminosycondiciones.com">Términos y condiciones</a>
+                            </label>
+                        </div>
+                        <legend class="float-none w-auto px-2">Radio</legend>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="radio1" id="radio1" value="option1" checked>
+                            <label class="form-check-label" for="radio1">
+                                Opción de Radio 1
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="radio1" id="radio2" value="option2">
+                            <label class="form-check-label" for="radio2">
+                                Opción de Radio 2
+                            </label>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </body>
+    <!---Bundle de Bootstrap--->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</html>

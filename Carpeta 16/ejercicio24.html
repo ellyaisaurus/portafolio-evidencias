@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<!-- Lenguaje de toda la pagina -->
+<html lang="es">
+    <head>
+        <title>Manipulación de DOM con JavaScript</title>
+        <link rel="stylesheet" href="css/estilo-0.css">
+        <!-- Hoja de estilo de Bootstrap V5.0 -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Manipulación del DOM con JavaScript">
+        <meta name="keywords" content="DOM, JavaScript, Manipulación, Eventos">
+        <meta name="author" content="Elian Mejia Gallardo">
+        <meta name="copyright" content="Elian Mejia Gallardo">
+        <meta name="application-name" content="Manipulación de DOM con JavaScript">
+        <meta name="generator" content="Elian Mejia Gallardo">
+        <meta charset="UTF-8">
+
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                margin: 20px;
+                text-align: center;
+            }
+
+        </style>
+    </head>
+    <body>
+        <h1>Manipulación de DOM con JavaScript</h1>
+        <p id="mensaje">Este texto cambiará cuando hagamos clic en el botón</p>
+        <button id="btnCambiar">Cambiar texto y color</button>
+        <button id="btnRestablecer">Restablecer texto y color</button>
+
+        <script>
+            // Accedemos a los elementos del DOM
+            let parrafo=document.getElementById("mensaje");
+            let btnCambiar=document.getElementById("btnCambiar");
+            let btnRestablecer=document.getElementById("btnRestablecer");
+
+            // Evento para cambiar texto y color
+            btnCambiar.addEventListener("click", function() {
+                parrafo.textContent="Texto cambiado";
+                parrafo.style.color="red";
+                parrafo.style.fontSize="20px";
+                parrafo.style.fontWeight="bold";
+            });
+
+            // Evento para restablecer texto y color
+            btnRestablecer.addEventListener("click", function() {
+                parrafo.textContent="Este texto cambiará cuando hagamos clic en el botón";
+                parrafo.style.color="black";
+            });
+        </script>
+    </body>
+    </html>

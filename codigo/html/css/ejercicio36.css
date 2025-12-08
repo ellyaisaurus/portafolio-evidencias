@@ -1,0 +1,184 @@
+/* --- Root Variables & Theme Setup --- */
+:root {
+    --bg-color: #0f172a;
+    --card-bg: rgba(30, 41, 59, 0.6);
+    --glass-border: rgba(255, 255, 255, 0.08);
+    --primary-accent: #6366f1; /* Indigo vibrante */
+    --primary-gradient: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+    --success-accent: #10b981;
+    --text-color: #f1f5f9;
+    --font-main: 'Outfit', sans-serif;
+}
+
+body {
+    background-color: var(--bg-color);
+    font-family: var(--font-main);
+    color: var(--text-color);
+    overflow-x: hidden;
+}
+
+.bg-dark-custom {
+    background: radial-gradient(circle at 50% -20%, #1e293b 0%, #0f172a 100%);
+    min-height: 100vh;
+}
+
+.bg-dark-input {
+    background: rgba(15, 23, 42, 0.6) !important;
+    backdrop-filter: blur(5px);
+}
+
+.bg-dark-input:focus {
+    background: rgba(15, 23, 42, 0.9) !important;
+    border-color: var(--primary-accent) !important;
+    box-shadow: 0 0 0 0.25rem rgba(99, 102, 241, 0.25) !important;
+    color: white !important;
+}
+
+/* --- Typography & Utils --- */
+.gradient-text {
+    background: linear-gradient(135deg, #ffffff 0%, #94a3b8 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.separator-glow {
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(99, 102, 241, 0.5), rgba(0, 0, 0, 0));
+    margin: 4rem 0;
+}
+
+/* --- Glass Components --- */
+.glass-panel, .product-card, .glass-toast {
+    background: var(--card-bg);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--glass-border);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+.glass-nav {
+    background: rgba(15, 23, 42, 0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--glass-border);
+}
+
+/* --- Marketplace Product Cards --- */
+.product-card {
+    border-radius: 16px;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    overflow: hidden;
+    position: relative;
+}
+
+.product-card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 20px 40px -5px rgba(0, 0, 0, 0.4);
+}
+
+.img-wrapper {
+    overflow: hidden;
+    border-radius: 12px;
+    height: 220px;
+    width: 100%;
+    background: #0f172a;
+}
+
+.card-img-top {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.product-card:hover .card-img-top {
+    transform: scale(1.15);
+}
+
+/* Logic Visual Feedback */
+.product-card.border-success {
+    border-color: var(--success-accent) !important;
+    box-shadow: 0 0 20px rgba(16, 185, 129, 0.2), inset 0 0 20px rgba(16, 185, 129, 0.05) !important;
+}
+
+.price-tag {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--primary-accent);
+    letter-spacing: -0.5px;
+}
+
+/* --- Upload Zone Styles --- */
+.upload-zone-glass {
+    background: rgba(255, 255, 255, 0.02);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.upload-zone-glass:hover, .upload-zone-glass.dragover {
+    background: rgba(99, 102, 241, 0.1);
+    box-shadow: inset 0 0 20px rgba(99, 102, 241, 0.2);
+}
+
+.icon-pulse i {
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+
+/* --- Buttons --- */
+.btn-primary-custom {
+    background: var(--primary-gradient);
+    border: none;
+    color: white;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.btn-primary-custom:hover {
+    box-shadow: 0 0 25px rgba(99, 102, 241, 0.5);
+    transform: scale(1.02);
+    color: white;
+}
+
+.btn-danger-glow {
+    background: rgba(239, 68, 68, 0.1);
+    color: #fca5a5;
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    transition: 0.3s;
+}
+
+.btn-danger-glow:hover {
+    background: #ef4444;
+    color: white;
+    box-shadow: 0 0 15px rgba(239, 68, 68, 0.4);
+}
+
+/* --- Task List Items --- */
+.glass-item {
+    background: rgba(255, 255, 255, 0.03);
+    transition: all 0.2s ease;
+}
+.glass-item:hover {
+    background: rgba(255, 255, 255, 0.08);
+}
+
+/* --- Animations --- */
+.fade-in-down { animation: fadeInDown 0.8s ease-out; }
+.fade-in { animation: fadeIn 0.6s ease-out forwards; }
+
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}

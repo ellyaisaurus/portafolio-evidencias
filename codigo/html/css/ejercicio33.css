@@ -1,0 +1,183 @@
+/* Variables de Diseño - Paleta Pastel Premium */
+:root {
+    --primary-pink: #ffb7c5;
+    --deep-rose: #e88a9d;
+    --soft-cream: #fff5f6;
+    --gold-accent: #d4af37;
+    --text-dark: #4a4a4a;
+    --glass-bg: rgba(255, 255, 255, 0.75);
+    --glass-border: rgba(255, 255, 255, 0.9);
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #fceef0;
+    overflow-x: hidden;
+    color: var(--text-dark);
+}
+
+/* --- Fondo Animado (Blobs) --- */
+.background-decor {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.6;
+    animation: float 10s infinite ease-in-out;
+}
+
+.blob-1 {
+    top: -10%;
+    left: -10%;
+    width: 500px;
+    height: 500px;
+    background: var(--primary-pink);
+    animation-delay: 0s;
+}
+
+.blob-2 {
+    bottom: -10%;
+    right: -10%;
+    width: 400px;
+    height: 400px;
+    background: #ffd1dc;
+    animation-delay: 2s;
+}
+
+.blob-3 {
+    top: 40%;
+    left: 60%;
+    width: 300px;
+    height: 300px;
+    background: #fff0f3;
+    animation-delay: 4s;
+}
+
+@keyframes float {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    33% { transform: translate(30px, -50px) scale(1.1); }
+    66% { transform: translate(-20px, 20px) scale(0.9); }
+}
+
+/* --- Tarjeta Premium (Glassmorphism) --- */
+.premium-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--glass-border);
+    border-radius: 24px;
+    box-shadow: 0 20px 50px rgba(232, 138, 157, 0.15), 
+                0 10px 20px rgba(0,0,0,0.05);
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    overflow: visible; /* Permitir que elementos salgan si es necesario */
+}
+
+.premium-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 30px 60px rgba(232, 138, 157, 0.25);
+}
+
+/* --- Imagen y Transiciones --- */
+.card-img-wrapper {
+    position: relative;
+    padding: 1.5rem 1.5rem 0 1.5rem;
+    height: 350px; /* Altura fija para evitar saltos */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-img-top {
+    border-radius: 20px;
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+/* Clase dinámica para la animación de cambio */
+.img-swap-anim {
+    transform: scale(0.95) rotateY(10deg);
+    opacity: 0;
+    filter: blur(5px);
+}
+
+/* Badge Decorativo */
+.badge-floating {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    background: white;
+    padding: 8px 16px;
+    border-radius: 50px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.2rem;
+    color: var(--deep-rose);
+    transform: rotate(5deg);
+}
+
+/* --- Tipografía --- */
+.card-title {
+    font-family: 'Dancing Script', cursive;
+    color: var(--deep-rose);
+    font-weight: 700;
+}
+
+.card-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+/* --- Botón Interactivo --- */
+.btn-custom {
+    background: linear-gradient(45deg, var(--deep-rose), var(--primary-pink));
+    border: none;
+    color: white;
+    padding: 12px 35px;
+    border-radius: 50px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 20px rgba(232, 138, 157, 0.4);
+    z-index: 1;
+}
+
+.btn-custom:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 15px 30px rgba(232, 138, 157, 0.6);
+    color: white;
+}
+
+.btn-custom:active {
+    transform: translateY(1px);
+}
+
+/* Efecto de brillo en el botón */
+.btn-shine {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.3) 50%, rgba(255,255,255,0) 100%);
+    transform: skewX(-20deg);
+    transition: left 0.5s;
+    z-index: -1;
+}
+
+.btn-custom:hover .btn-shine {
+    left: 150%;
+    transition: left 0.7s ease-in-out;
+}

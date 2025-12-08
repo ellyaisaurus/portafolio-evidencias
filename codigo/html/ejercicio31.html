@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AURA | Private Residence Club</title>
+    
+    <!-- Bootstrap 5.0.2 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    
+    <!-- Flatpickr (Selector de Fechas de Lujo) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/ejercicio31.css">
+</head>
+<body class="d-flex flex-column min-vh-100">
+
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg navbar-aura fixed-top">
+        <div class="container">
+            <a class="navbar-brand text-espresso font-display fw-bold" href="#">
+                AURA <span class="text-terracotta fs-6 align-top">Club</span>
+            </a>
+            
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <i class="fa-solid fa-bars text-espresso fs-3"></i>
+            </button>
+            
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav align-items-center">
+                    <li class="nav-item"><a class="nav-link" href="#destinations">Residencias</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#membership">Membresía</a></li>
+                    
+                    <!-- AREA DE USUARIO -->
+                    <li class="nav-item ms-3">
+                        <!-- Botón Login (Visible si no hay sesión) -->
+                        <button id="nav-login-btn" class="btn btn-aura-outline btn-sm" data-bs-toggle="modal" data-bs-target="#loginModal">
+                            Iniciar Sesión
+                        </button>
+
+                        <!-- Avatar Usuario (Visible si hay sesión) -->
+                        <div id="nav-user-area" class="d-none dropdown">
+                            <div class="user-avatar-btn" id="user-avatar-btn" data-bs-toggle="dropdown" aria-expanded="false"></div>
+                            <ul class="dropdown-menu dropdown-menu-end border-0 shadow-lg p-3 rounded-3" style="min-width: 250px;">
+                                <li><h6 class="dropdown-header font-display">Mi Cuenta</h6></li>
+                                <li>
+                                    <button class="dropdown-item rounded-2 py-2 mb-1" data-bs-toggle="modal" data-bs-target="#profileModal">
+                                        <i class="fa-solid fa-user-gear me-2 text-terracotta"></i> Gestionar Perfil
+                                    </button>
+                                </li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li>
+                                    <button id="btn-logout" class="dropdown-item rounded-2 py-2 text-danger">
+                                        <i class="fa-solid fa-arrow-right-from-bracket me-2"></i> Cerrar Sesión
+                                    </button>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <li class="nav-item ms-3">
+                        <div class="cart-trigger shadow-sm" data-bs-toggle="offcanvas" data-bs-target="#offcanvasCart">
+                            <i class="fa-solid fa-suitcase-rolling text-espresso"></i>
+                            <span id="cart-count" class="cart-count d-none">0</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <header class="hero-section">
+        <div class="hero-bg"></div>
+        <div class="hero-overlay"></div>
+        <div class="container position-relative z-index-1">
+            <div class="hero-content">
+                <span class="text-white text-uppercase ls-2 mb-3 d-block small fw-bold" style="letter-spacing: 3px;">Bienvenido a casa</span>
+                <h1 class="hero-title font-display">El arte de vivir <br><span class="fst-italic text-terracotta">sin límites</span></h1>
+                <p class="hero-subtitle">Propiedad fraccional de lujo en los destinos más codiciados del planeta.</p>
+                <div class="hero-btns d-flex gap-3">
+                    <a href="#destinations" class="btn btn-aura-primary">Explorar Colección</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- DESTINATIONS -->
+    <section id="destinations" class="py-5 bg-white">
+        <div class="container py-5">
+            <div class="d-flex justify-content-between align-items-end mb-5">
+                <div>
+                    <span class="text-terracotta text-uppercase fw-bold small">Nuestra Colección</span>
+                    <h2 class="display-5 font-display mb-0">Destinos Destacados</h2>
+                </div>
+            </div>
+
+            <div class="row g-4">
+                <!-- Card 1: Riviera Maya -->
+                <div class="col-lg-6">
+                    <div class="card card-destination h-100">
+                        <div class="card-img-wrapper">
+                            <img src="img/ejercicio31_img2.jpg" class="card-img-top" alt="Riviera Maya">
+                            <div class="card-price-overlay">
+                                $15,000 USD <span class="small fw-normal text-muted">/ Semana</span>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title font-display">Riviera Maya, México</h3>
+                            <p class="card-text text-muted">Penthouse frente al mar caribe.</p>
+                            
+                            <!-- SELECTOR DE FECHAS DE LUJO -->
+                            <div class="date-selector-wrapper mb-3 d-flex align-items-center">
+                                <i class="fa-regular fa-calendar-check text-terracotta me-2 fs-5"></i>
+                                <input type="text" class="date-picker-input date-input-custom" placeholder="Seleccionar Fecha de Llegada">
+                            </div>
+
+                            <button class="btn btn-aura-primary btn-sm btn-add-cart w-100"
+                                data-id="101" data-title="Riviera Maya Penthouse" data-price="15000" data-img="img/ejercicio31_img2.jpg" data-type="one-time">
+                                <i class="fa-solid fa-plus me-2"></i> Reservar Semana
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2: Bali -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="card card-destination h-100">
+                        <div class="card-img-wrapper">
+                            <img src="img/ejercicio31_img3.png" class="card-img-top" alt="Bali">
+                            <div class="card-price-overlay small">$12,500 USD</div>
+                        </div>
+                        <div class="card-body">
+                            <h4 class="h5 font-display">Ubud, Bali</h4>
+                            <p class="card-text small text-muted mb-3">Villa privada en la selva.</p>
+                            
+                            <!-- Date Input -->
+                            <div class="date-selector-wrapper mb-3 p-1">
+                                <input type="text" class="date-picker-input date-input-custom text-center" placeholder="Fecha">
+                            </div>
+
+                            <button class="btn btn-outline-dark rounded-pill w-100 btn-sm btn-add-cart"
+                                data-id="102" data-title="Bali Jungle Villa" data-price="12500" data-img="img/ejercicio31_img3.png" data-type="one-time">
+                                Agregar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3: Santorini -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="card card-destination h-100">
+                        <div class="card-img-wrapper">
+                            <img src="img/ejercicio31_img4.png" class="card-img-top" alt="Santorini">
+                            <div class="card-price-overlay small">$18,000 USD</div>
+                        </div>
+                        <div class="card-body">
+                            <h4 class="h5 font-display">Santorini, Grecia</h4>
+                            <p class="card-text small text-muted mb-3">Sunset suite con vista.</p>
+                            
+                             <!-- Date Input -->
+                             <div class="date-selector-wrapper mb-3 p-1">
+                                <input type="text" class="date-picker-input date-input-custom text-center" placeholder="Fecha">
+                            </div>
+
+                            <button class="btn btn-outline-dark rounded-pill w-100 btn-sm btn-add-cart"
+                                data-id="103" data-title="Santorini Sunset Suite" data-price="18000" data-img="img/ejercicio31_img4.png" data-type="one-time">
+                                Agregar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MEMBERSHIP -->
+    <section id="membership" class="membership-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-5 mb-lg-0">
+                    <span class="badge badge-luxury mb-3">Membresía Founder</span>
+                    <h2 class="display-4 font-display text-white mb-4">Suscripción Anual Elite</h2>
+                    <p class="text-white-50 mb-4">Acceso ilimitado a concierge, upgrades y eventos privados.</p>
+                    
+                    <div class="d-flex align-items-end gap-3 mb-4">
+                        <h3 class="text-gold display-6 mb-0">$5,000 USD</h3>
+                        <span class="text-white-50 pb-2">/ Anual</span>
+                    </div>
+
+                    <button class="btn btn-light rounded-pill px-5 fw-bold btn-add-cart"
+                        data-id="999" data-title="Membresía AURA Founder" data-price="5000" data-img="img/ejercicio31_img5.png" data-type="recurring">
+                        Suscribirse Ahora
+                    </button>
+                </div>
+                <div class="col-lg-6">
+                    <img src="img/ejercicio31_img5.png" alt="Lifestyle" class="img-fluid membership-img w-100">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER (Añadido) -->
+    <footer class="bg-espresso text-white py-5 mt-auto">
+        <div class="container pt-4">
+            <div class="row g-5">
+                <div class="col-lg-4">
+                    <h3 class="font-display mb-3">AURA</h3>
+                    <p class="text-white-50 small">Redefiniendo el concepto de propiedad vacacional de lujo. Experiencias curadas, destinos inigualables.</p>
+                    <div class="d-flex gap-3 mt-4">
+                        <a href="#" class="text-white-50 hover-terracotta"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" class="text-white-50 hover-terracotta"><i class="fa-brands fa-facebook"></i></a>
+                        <a href="#" class="text-white-50 hover-terracotta"><i class="fa-brands fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 offset-lg-2">
+                    <h5 class="h6 text-terracotta mb-4 font-display">Explorar</h5>
+                    <ul class="text-white-50 small lh-lg">
+                        <li><a href="#destinations" class="text-reset text-decoration-none">Destinos</a></li>
+                        <li><a href="#membership" class="text-reset text-decoration-none">Membresía</a></li>
+                        <li><a href="#" class="text-reset text-decoration-none">Concierge</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4">
+                    <h5 class="h6 text-terracotta mb-4 font-display">Newsletter</h5>
+                    <form id="newsletter-form" class="input-group">
+                        <input type="email" class="form-control bg-transparent border-secondary text-white" placeholder="tu@correo.com" required>
+                        <button class="btn btn-outline-light" type="submit">Suscribir</button>
+                    </form>
+                </div>
+            </div>
+            <div class="border-top border-secondary mt-5 pt-4 text-center text-white-50 small">
+                &copy; 2025 AURA Private Residence Club. Todos los derechos reservados.
+            </div>
+        </div>
+    </footer>
+
+    <!-- OFFCANVAS CART -->
+    <div class="offcanvas offcanvas-end offcanvas-aura" tabindex="-1" id="offcanvasCart">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title font-display fw-bold">Itinerario</h5>
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"></button>
+        </div>
+        <div class="offcanvas-body d-flex flex-column p-0">
+            <div id="empty-state" class="text-center py-5 mt-5">
+                <i class="fa-solid fa-suitcase fa-4x text-terracotta opacity-25 mb-3"></i>
+                <p class="text-muted">No has seleccionado fechas ni destinos.</p>
+            </div>
+            <div id="cart-items-container" class="flex-grow-1 overflow-auto p-3"></div>
+            <div class="cart-footer bg-white p-4 border-top d-none">
+                <div class="d-flex justify-content-between mb-2 small text-muted">
+                    <span>Subtotal</span><span id="cart-subtotal">$0</span>
+                </div>
+                <div class="d-flex justify-content-between mb-3 small text-muted">
+                    <span>Impuestos (16%)</span><span id="cart-tax">$0</span>
+                </div>
+                <div class="d-flex justify-content-between mb-4">
+                    <span class="fw-bold h5">Total</span>
+                    <span id="cart-total" class="fw-bold h5 text-terracotta">$0</span>
+                </div>
+                <button id="btn-checkout" class="btn btn-aura-primary w-100">Reservar Ahora</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 1: LOGIN -->
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title font-display text-white">Iniciar Sesión</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body p-4 bg-white">
+                    <form id="login-form">
+                        <div class="mb-3">
+                            <label class="form-label small fw-bold">Nombre Completo</label>
+                            <input type="text" id="login-name" class="form-control" placeholder="Ej. Juan Pérez" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label small fw-bold">Correo Electrónico</label>
+                            <input type="email" id="login-email" class="form-control" placeholder="juan@ejemplo.com" required>
+                        </div>
+                        <button type="submit" class="btn btn-aura-primary w-100">Entrar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 2: USER PROFILE & SUBSCRIPTIONS -->
+    <div class="modal fade" id="profileModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header bg-white border-bottom">
+                    <h5 class="modal-title font-display text-espresso">Mi Membresía AURA</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body p-4 bg-sand">
+                    <h6 class="text-terracotta font-display fw-bold mb-3">Suscripciones Activas</h6>
+                    <!-- Contenedor dinámico de suscripciones -->
+                    <div id="subscriptions-list">
+                        <!-- JS inyectará aquí -->
+                    </div>
+                </div>
+                <div class="modal-footer bg-white border-0">
+                    <button type="button" class="btn btn-light btn-sm" data-bs-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 3: CHECKOUT -->
+    <div class="modal fade" id="checkoutModal" tabindex="-1" aria-hidden="true" data-bs-backdrop="static">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title font-display text-white">Confirmar Reserva</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body p-4 bg-light">
+                    <!-- Step Payment -->
+                    <div id="step-payment">
+                        <form id="payment-form">
+                            <div class="mb-3">
+                                <label class="form-label small fw-bold">Titular</label>
+                                <input type="text" id="input-card-name" class="form-control" required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label small fw-bold">Tarjeta</label>
+                                <input type="text" class="form-control" placeholder="0000 0000 0000 0000" required>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-6"><input type="text" class="form-control" placeholder="MM/YY" required></div>
+                                <div class="col-6"><input type="password" class="form-control" placeholder="CVC" required></div>
+                            </div>
+                            <button type="submit" id="modal-pay-btn" class="btn btn-aura-primary w-100">Pagar</button>
+                        </form>
+                    </div>
+                    <!-- Step Processing -->
+                    <div id="step-processing" class="text-center py-4 d-none">
+                        <div class="spinner-aura mb-3"></div>
+                        <p class="font-display">Validando transacción...</p>
+                    </div>
+                    <!-- Step Success -->
+                    <div id="step-success" class="text-center py-4 d-none">
+                        <i class="fa-solid fa-check-circle text-success display-4 mb-3"></i>
+                        <h5 class="font-display">¡Pago Exitoso!</h5>
+                        <p class="text-muted small">Tu suscripción ha sido activada en tu perfil y la reserva enviada a tu correo.</p>
+                        <button class="btn btn-outline-dark btn-sm rounded-pill" data-bs-dismiss="modal">Cerrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TOAST CONTAINER -->
+    <div class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index: 1060;" id="toast-container"></div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script> <!-- Datepicker JS -->
+    <script src="https://npmcdn.com/flatpickr/dist/l10n/es.js"></script> <!-- Español para datepicker -->
+    <script src="js/ejercicio31.js"></script>
+</body>
+</html>

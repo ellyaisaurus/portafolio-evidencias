@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <title>Popovers, Tooltips y Toasts en Bootstrap</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Popovers, Tooltips y Toasts en Bootstrap">
+    <meta name="keywords" content="popovers, tooltips, toasts, bootstrap">
+    <meta name="author" content="Elian Mejia Gallardo">
+    <meta name="application-name" content="Popovers, Tooltips y Toasts en Bootstrap">
+    <meta name="copyright" content="Elian Mejia Gallardo">
+    <meta name="generator" content="Visual Studio Code">
+    
+    <!-- Bootstrap V5.0.2 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<body class="p-5">
+    <div class="container">
+        <h1 class="mb-5">Práctica: Popovers, Tooltips y Toasts</h1>
+
+        <!-- TOOLIPS -->
+        <section class="mb-5">
+            <h2>Tooltips (hover para ver)</h2>
+            <div class="d-flex gap-2 flex-wrap">
+                <button class="btn btn-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="¡Tooltip superior!">Tooltip Top</button>
+                <button class="btn btn-success" data-bs-toggle="tooltip" data-bs-placement="right" title="¡Tooltip derecho!">Tooltip Right</button>
+                <button class="btn btn-warning" data-bs-toggle="tooltip" data-bs-placement="bottom" title="¡Tooltip inferior!">Tooltip Bottom</button>
+                <button class="btn btn-danger" data-bs-toggle="tooltip" data-bs-placement="left" title="¡Tooltip izquierdo!">Tooltip Left</button>
+            </div>
+        </section>
+
+        <!-- POPOVERS -->
+        <section class="mb-5">
+            <h2>Popovers (click para ver)</h2>
+            <div class="d-flex gap-2 flex-wrap">
+                <button class="btn btn-info" data-bs-toggle="popover" data-bs-placement="top" data-bs-html="true" 
+                        data-bs-title="Popover Superior" data-bs-content="<strong>¡Contenido HTML!</strong> con <em>énfasis</em> y <a href='#' class='text-white'>enlace</a>">
+                    Popover Top
+                </button>
+                <button class="btn btn-secondary" data-bs-toggle="popover" data-bs-placement="right" 
+                        data-bs-title="Popover Derecho" data-bs-content="Contenido más largo que explica cómo funciona este popover con múltiples líneas.">
+                    Popover Right
+                </button>
+                <button class="btn btn-primary" data-bs-toggle="popover" data-bs-placement="bottom" 
+                        data-bs-title="Popover Inferior" data-bs-content="¡Popover con posición inferior!">
+                    Popover Bottom
+                </button>
+            </div>
+        </section>
+
+        <!-- TOASTS -->
+        <section class="mb-5">
+            <h2>Toasts (notificaciones)</h2>
+            <div class="toast-container position-fixed bottom-0 end-0 p-3">
+                <!-- Toast Exito -->
+                <div id="toastExito" class="toast align-items-center text-white bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
+                    <div class="d-flex">
+                        <div class="toast-body">¡Operación exitosa! ✅</div>
+                        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+                    </div>
+                </div>
+                <!-- Toast Error -->
+                <div id="toastError" class="toast align-items-center text-white bg-danger border-0" role="alert" aria-live="assertive" aria-atomic="true">
+                    <div class="d-flex">
+                        <div class="toast-body">¡Error en la operación! ❌</div>
+                        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+                    </div>
+                </div>
+                <!-- Toast Info -->
+                <div id="toastInfo" class="toast align-items-center text-white bg-info border-0" role="alert" aria-live="assertive" aria-atomic="true">
+                    <div class="d-flex">
+                        <div class="toast-body">¡Información importante! ℹ️</div>
+                        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+                    </div>
+                </div>
+            </div>
+            <div class="d-flex gap-2 flex-wrap">
+                <button class="btn btn-success" onclick="mostrarToast('toastExito')">Toast Éxito</button>
+                <button class="btn btn-danger" onclick="mostrarToast('toastError')">Toast Error</button>
+                <button class="btn btn-info" onclick="mostrarToast('toastInfo')">Toast Info</button>
+            </div>
+        </section>
+    </div>
+
+    <!-- Bootstrap V5.0.2 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    
+    <script>
+        // Esperar a que Bootstrap cargue completamente
+        document.addEventListener('DOMContentLoaded', function() {
+            // Inicializar TODOS los tooltips
+            var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+            var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+                return new bootstrap.Tooltip(tooltipTriggerEl);
+            });
+
+            // Inicializar TODOS los popovers
+            var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'));
+            var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+                return new bootstrap.Popover(popoverTriggerEl);
+            });
+        });
+
+        // Función para mostrar Toasts
+        function mostrarToast(toastId) {
+            var toastEl = document.getElementById(toastId);
+            var toast = new bootstrap.Toast(toastEl);
+            toast.show();
+        }
+    </script>
+</body>
+</html>

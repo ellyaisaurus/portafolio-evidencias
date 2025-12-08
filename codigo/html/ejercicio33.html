@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¡Que Delicia! - Experiencia Interactiva</title>
+    
+    <!-- Bootstrap V5.0.2 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    
+    <!-- Google Fonts: Elegancia y Modernidad -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <!-- Estilos Personalizados -->
+    <link rel="stylesheet" href="css/ejercicio33.css">
+</head>
+<body>
+
+    <!-- Fondo animado con elementos flotantes decorativos -->
+    <div class="background-decor">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <!-- Contenedor Principal -->
+    <main class="container-fluid min-vh-100 d-flex align-items-center justify-content-center main-wrapper">
+        <div class="row w-100 justify-content-center">
+            <div class="col-12 col-md-8 col-lg-5">
+                
+                <!-- Tarjeta Premium con Efecto Glassmorphism -->
+                <div class="card premium-card border-0">
+                    
+                    <!-- Contenedor de Imagen con Efecto de Revelado -->
+                    <div class="card-img-wrapper">
+                        <div class="img-overlay"></div>
+                        <img src="img/pasteleria.png" class="card-img-top img-fluid shadow-lg" alt="Interior de la pastelería" id="cardImage">
+                        <div class="badge-floating">
+                            <span class="badge-text">Premium</span>
+                        </div>
+                    </div>
+
+                    <div class="card-body text-center p-5">
+                        <h5 class="card-title display-5 mb-3" id="cardTitle">Bienvenido a ¡Que Delicia!</h5>
+                        
+                        <p class="card-text lead text-muted mb-4" id="cardText">
+                            Sumérgete en un ambiente donde el aroma a vainilla y los colores pastel crean una atmósfera de ensueño. Cada rincón está diseñado para inspirar dulzura.
+                        </p>
+                        
+                        <!-- Botón de Alta Fidelidad -->
+                        <button id="actionBtn" class="btn btn-custom btn-lg position-relative overflow-hidden">
+                            <span class="btn-content">Descubrir Especialidad</span>
+                            <span class="btn-shine"></span>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    
+    <!-- Lógica JS -->
+    <script src="js/ejercicio33.js"></script>
+</body>
+</html>

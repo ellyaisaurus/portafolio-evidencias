@@ -1,0 +1,167 @@
+/* Import Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+
+/* --- CSS Variables for a Modern Palette --- */
+:root {
+    --color-bg-primary: #f8f9fa; /* Very light grey background */
+    --color-bg-secondary: #ffffff; /* White for cards/sections */
+    --color-text-dark: #212529; /* Dark charcoal for primary text */
+    --color-text-medium: #495057; /* Medium grey for secondary text */
+    --color-accent-blue: #007bff; /* Vibrant blue */
+    --color-accent-green: #28a745; /* Complementary green */
+    --color-border-light: #e9ecef; /* Light grey border */
+    --color-shadow-light: rgba(0, 0, 0, 0.08); /* Subtle shadow */
+    --color-shadow-medium: rgba(0, 0, 0, 0.12); /* Slightly stronger shadow */
+}
+
+/* Estilos generales para el cuerpo de la página */
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+    background-color: var(--color-bg-primary);
+    color: var(--color-text-dark);
+    margin: 0;
+    padding: 2rem;
+    display: flex; /* Use flexbox for centering content */
+    justify-content: center;
+    align-items: flex-start; /* Align items to the start vertically */
+    min-height: 100vh; /* Ensure body takes full viewport height */
+}
+
+/* Contenedor principal para el contenido */
+.content-wrapper {
+    max-width: 900px; /* Slightly wider than before */
+    width: 100%; /* Ensure it takes full width up to max-width */
+    padding: 1.5rem; /* Add some padding inside the wrapper */
+    background-color: var(--color-bg-secondary); /* White background for the main content area */
+    border-radius: 12px; /* More rounded corners for the main content block */
+    box-shadow: 0 10px 30px var(--color-shadow-light); /* More prominent but soft shadow */
+}
+
+/* Estilos para los encabezados */
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 700;
+    color: var(--color-text-dark);
+    margin-top: 1.8em; /* Slightly more top margin */
+    margin-bottom: 0.8em; /* Slightly more bottom margin */
+    line-height: 1.2; /* Tighter line height for headings */
+}
+
+h1 { font-size: 2.8rem; color: var(--color-accent-blue); } /* Larger, accent color */
+h2 { font-size: 2.2rem; }
+h3 { font-size: 1.8rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.1rem; }
+h6 { font-size: 0.9rem; color: var(--color-text-medium); } /* Smaller, secondary color */
+
+/* Estilo para los párrafos */
+p {
+    margin-bottom: 1.2rem; /* More space between paragraphs */
+    color: var(--color-text-medium);
+    font-weight: 300; /* Lighter font weight for readability */
+}
+
+/* Estilos para enlaces */
+a {
+    color: var(--color-accent-blue);
+    text-decoration: none;
+    transition: color 0.2s ease-in-out, text-decoration 0.2s ease-in-out;
+}
+
+a:hover {
+    color: #0056b3; /* A slightly darker blue */
+    text-decoration: underline;
+}
+
+/* Estilos para la clase .section */
+.section {
+    background-color: var(--color-bg-secondary);
+    border: 1px solid var(--color-border-light);
+    border-radius: 10px; /* Slightly more rounded */
+    padding: 2.5rem; /* More padding */
+    margin-top: 3rem; /* More top margin */
+    box-shadow: 0 8px 20px var(--color-shadow-light); /* Enhanced shadow */
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Smooth transition */
+}
+
+.section h1 {
+    color: var(--color-accent-blue);
+    border-bottom: 2px solid var(--color-border-light);
+    padding-bottom: 0.8rem; /* More padding below border */
+    margin-top: 0; /* Quitar margen superior para el primer elemento */
+    margin-bottom: 1.5rem; /* More space after heading */
+}
+
+.section:hover {
+    transform: translateY(-5px); /* Subtle lift effect */
+    box-shadow: 0 12px 25px var(--color-shadow-medium); /* Stronger shadow on hover */
+}
+
+/* Estilos para la clase .article */
+.article {
+    background-color: var(--color-bg-secondary);
+    border-left: 5px solid var(--color-accent-green); /* Thicker, vibrant green border */
+    padding: 2rem; /* More padding */
+    margin-top: 3rem;
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 5px 15px var(--color-shadow-light); /* Subtle shadow */
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.article h2 {
+    color: var(--color-accent-green);
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+
+.article:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px var(--color-shadow-medium);
+}
+
+/* Limpiar márgenes para que los contenedores se vean mejor */
+.section > :last-child,
+.article > :last-child {
+    margin-bottom: 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    body {
+        padding: 1rem;
+    }
+
+    .content-wrapper {
+        padding: 1rem;
+        border-radius: 8px;
+    }
+
+    h1 { font-size: 2.2rem; }
+    h2 { font-size: 1.8rem; }
+    h3 { font-size: 1.5rem; }
+
+    .section, .article {
+        padding: 1.5rem;
+        margin-top: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 0.5rem;
+    }
+
+    .content-wrapper {
+        padding: 0.8rem;
+        border-radius: 6px;
+    }
+
+    h1 { font-size: 1.8rem; }
+    h2 { font-size: 1.5rem; }
+    h3 { font-size: 1.3rem; }
+
+    .section, .article {
+        padding: 1rem;
+        margin-top: 1.5rem;
+    }
+}

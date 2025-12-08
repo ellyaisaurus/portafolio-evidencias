@@ -1,0 +1,195 @@
+/* VARIABLES DE COLOR (Paleta Solicitada) */
+:root {
+    --yale-blue: #1B4079;
+    --air-force-blue: #4D7C8A;
+    --cambridge-blue: #7F9C96;
+    --cambridge-green: #8FAD88;
+    --mindaro: #CBDF90;
+    --text-light: #f8f9fa;
+    --glass-bg: rgba(27, 64, 121, 0.65);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --table-hover: rgba(203, 223, 144, 0.15);
+}
+
+/* CONFIGURACIÓN GLOBAL */
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--yale-blue);
+    color: var(--text-light);
+    overflow-x: hidden;
+    min-height: 100vh;
+}
+
+h1, h2, h3, h4, h5, .navbar-brand {
+    font-family: 'Poppins', sans-serif;
+}
+
+/* FONDO ANIMADO */
+.bg-shapes {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+    background: radial-gradient(circle at 10% 20%, rgb(27, 64, 121) 0%, rgb(10, 25, 50) 90%);
+}
+
+.shape {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.6;
+    animation: float 10s infinite alternate;
+}
+
+.shape-1 { width: 400px; height: 400px; background: var(--air-force-blue); top: -100px; left: -100px; }
+.shape-2 { width: 300px; height: 300px; background: var(--mindaro); bottom: 10%; right: -50px; animation-delay: 2s; opacity: 0.3; }
+.shape-3 { width: 250px; height: 250px; background: var(--cambridge-green); top: 40%; left: 40%; animation-delay: 4s; opacity: 0.4; }
+
+@keyframes float {
+    0% { transform: translate(0, 0); }
+    100% { transform: translate(30px, 50px); }
+}
+
+/* OVERLAY DE CARGA */
+#loader-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--yale-blue);
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.5s ease;
+}
+
+/* GLASSMORPHISM UI */
+.glass-card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--glass-border);
+    border-radius: 24px;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.glass-nav {
+    background: rgba(27, 64, 121, 0.8);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+.glass-badge {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid var(--glass-border);
+}
+
+.glass-progress {
+    background: rgba(255,255,255,0.1);
+    border-radius: 10px;
+    height: 6px;
+}
+
+/* INPUTS Y SELECTS ESTILO GLASS */
+.glass-input {
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid var(--glass-border);
+    color: white;
+}
+
+.glass-input:focus {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+    border-color: var(--mindaro);
+    box-shadow: none;
+}
+.glass-input option {
+    background-color: var(--yale-blue);
+    color: white;
+}
+
+/* ESTILOS DATATABLES CUSTOMIZADOS */
+div.dataTables_wrapper div.dataTables_length label,
+div.dataTables_wrapper div.dataTables_filter label,
+div.dataTables_wrapper div.dataTables_info,
+div.dataTables_wrapper div.dataTables_paginate {
+    color: rgba(255,255,255,0.7) !important;
+    font-size: 0.9rem;
+}
+
+.table {
+    color: rgba(255,255,255,0.9);
+}
+
+.table-hover tbody tr:hover {
+    color: white;
+    background-color: var(--table-hover);
+}
+
+/* Paginación DataTables */
+.page-item.active .page-link {
+    background-color: var(--mindaro);
+    border-color: var(--mindaro);
+    color: var(--yale-blue);
+    font-weight: bold;
+}
+
+.page-link {
+    background-color: transparent;
+    border-color: var(--glass-border);
+    color: white;
+}
+
+.page-link:hover {
+    background-color: rgba(255,255,255,0.1);
+    color: var(--mindaro);
+}
+
+/* UTILIDADES */
+.text-mindaro { color: var(--mindaro) !important; }
+.text-cambridge-blue { color: var(--cambridge-blue) !important; }
+.text-air-force { color: var(--air-force-blue) !important; }
+.bg-mindaro { background-color: var(--mindaro) !important; }
+.bg-cambridge-blue { background-color: var(--cambridge-blue) !important; }
+.bg-air-force { background-color: var(--air-force-blue) !important; }
+
+.fs-7 { font-size: 0.85rem; letter-spacing: 0.5px; }
+
+.card-icon-bg {
+    position: absolute;
+    top: -20px;
+    right: -20px;
+    font-size: 8rem;
+    color: rgba(255, 255, 255, 0.03);
+    transform: rotate(15deg);
+    pointer-events: none;
+}
+
+/* ANIMACIONES */
+.animate-up {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+.delay-1 { animation-delay: 0.1s; }
+.delay-2 { animation-delay: 0.2s; }
+.delay-3 { animation-delay: 0.3s; }
+.delay-4 { animation-delay: 0.4s; }
+.delay-5 { animation-delay: 0.5s; }
+.delay-6 { animation-delay: 0.6s; }
+
+.count-up { display: inline-block; }
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
