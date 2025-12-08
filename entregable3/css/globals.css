@@ -1,0 +1,715 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;500;700&family=Space+Grotesk:wght@400;600;700&display=swap');
+
+:root {
+    --primary: #7C3AED;
+    --primary-hover: #6D28D9;
+    --secondary: #DB2777;
+    --bg-body: #FAFAFA;
+    --bg-soft: #EDE9FE;
+    --text-main: #1F2937; /* El gris original, NO negro */
+    --text-muted: #6B7280;
+    --white: #FFFFFF;
+    --shadow-soft: 0 10px 40px -10px rgba(124, 58, 237, 0.15);
+    --shadow-hover: 0 20px 40px -5px rgba(124, 58, 237, 0.25);
+}
+
+body {
+    font-family: 'DM Sans', sans-serif;
+    background-color: var(--bg-body);
+    color: var(--text-main);
+    overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6, .navbar-brand {
+    font-family: 'Space Grotesk', sans-serif;
+    letter-spacing: -0.02em;
+}
+
+.text-gradient {
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* COMPONENTES */
+
+.btn-primary {
+    background-color: var(--primary);
+    border-color: var(--primary);
+    padding: 0.75rem 1.5rem;
+    font-weight: 500;
+    border-radius: 0.75rem;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-hover);
+    border-color: var(--primary-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(124, 58, 237, 0.3);
+}
+
+.btn-outline-primary {
+    color: var(--primary);
+    border: 1px solid var(--primary);
+    background: transparent;
+    padding: 0.75rem 1.5rem;
+    font-weight: 500;
+    border-radius: 0.75rem;
+    transition: all 0.3s ease;
+}
+
+.btn-outline-primary:hover {
+    background-color: var(--bg-soft);
+    color: var(--primary-hover);
+    transform: translateY(-2px);
+}
+
+.card-custom {
+    background: var(--white);
+    border: 1px solid rgba(124, 58, 237, 0.05);
+    border-radius: 1.5rem;
+    padding: 2rem;
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow-soft);
+}
+
+.card-custom:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-hover);
+    border-color: rgba(124, 58, 237, 0.2);
+}
+
+.navbar-custom {
+    background-color: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(124, 58, 237, 0.05);
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+.nav-link {
+    color: var(--text-main) !important;
+    font-weight: 500;
+    margin: 0 0.5rem;
+}
+
+.nav-link.active {
+    color: var(--primary) !important;
+}
+
+/* DOCK FLOTANTE (ESTILO AJUSTADO A LA MARCA) */
+.floating-dock-container {
+    position: fixed;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1040;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.75rem 1.5rem;
+    /* Fondo blanco semitransparente, no negro */
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(8px);
+    border-radius: 50rem;
+    /* Sombra suave y borde sutil violeta */
+    box-shadow: 0 10px 30px rgba(124, 58, 237, 0.2);
+    border: 1px solid rgba(124, 58, 237, 0.2);
+    transition: transform 0.3s ease;
+}
+
+.floating-dock-container:hover {
+    transform: translateX(-50%) translateY(-3px);
+    box-shadow: 0 15px 35px rgba(124, 58, 237, 0.3);
+}
+
+.dock-text {
+    color: var(--text-main);
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.dock-btn {
+    background: var(--bg-soft);
+    color: var(--primary);
+    border: 1px solid rgba(124, 58, 237, 0.1);
+    border-radius: 50rem;
+    padding: 0.5rem 1.25rem;
+    font-weight: 700;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.2s;
+}
+
+.dock-btn:hover {
+    background: var(--primary);
+    color: var(--white);
+}
+
+footer {
+    background-color: var(--white);
+    border-top: 1px solid rgba(124, 58, 237, 0.1);
+}
+
+footer h5 {
+    color: var(--text-main);
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+}
+
+footer a {
+    color: var(--text-muted);
+    transition: color 0.2s;
+}
+
+footer a:hover {
+    color: var(--primary);
+}
+
+.nav-pills .nav-link {
+    background-color: var(--white);
+    color: var(--text-muted);
+    border: 1px solid rgba(124, 58, 237, 0.1);
+    margin: 0 0.5rem;
+    padding: 0.75rem 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.nav-pills .nav-link:hover {
+    background-color: var(--bg-soft);
+    color: var(--primary);
+    transform: translateY(-2px);
+}
+
+.nav-pills .nav-link.active,
+.nav-pills .show > .nav-link {
+    background-color: var(--primary) !important;
+    color: var(--white) !important;
+    border-color: var(--primary);
+    box-shadow: 0 4px 12px rgba(124, 58, 237, 0.3);
+}
+
+.nav-pills .nav-link.active::after {
+    display: none;
+}
+
+/* --- ESTILOS DE PÁGINA TECNOLOGÍA --- */
+
+/* Ventana de Código Estilo VS Code */
+.code-window {
+    background-color: #1E1E1E; /* Dark theme background */
+    border-radius: 0.75rem;
+    overflow: hidden;
+    font-family: 'Courier New', Courier, monospace;
+    position: relative;
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+.code-header {
+    background-color: #252526;
+    border-bottom: 1px solid #333;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.code-line {
+    margin-bottom: 0.25rem;
+    line-height: 1.5;
+}
+
+/* Colores de Sintaxis */
+.text-pink { color: #C586C0; }
+.text-blue { color: #569CD6; }
+.text-green { color: #CE9178; }
+.text-purple { color: #9CDCFE; }
+.text-yellow { color: #DCDCAA; }
+
+/* Tarjetas Tech */
+.tech-card {
+    background: var(--white);
+    border-radius: 1rem;
+    border: 1px solid rgba(124, 58, 237, 0.05);
+    transition: all 0.3s ease;
+    height: 100%;
+}
+
+.tech-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    border-color: rgba(124, 58, 237, 0.3);
+}
+
+/* Animación de Pulso para el botón del tutorial */
+@keyframes pulse-primary {
+    0% { box-shadow: 0 0 0 0 rgba(124, 58, 237, 0.7); }
+    70% { box-shadow: 0 0 0 10px rgba(124, 58, 237, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(124, 58, 237, 0); }
+}
+
+.pulse-animation {
+    animation: pulse-primary 2s infinite;
+}
+
+/* Ajuste Driver.js para que combine con el tema */
+.driver-popover.driverjs-theme {
+    background-color: var(--white);
+    color: var(--text-main);
+    border-radius: 1rem;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+}
+
+.driver-popover.driverjs-theme .driver-popover-title {
+    font-family: 'Space Grotesk', sans-serif;
+    color: var(--primary);
+    font-size: 1.2rem;
+}
+
+.driver-popover.driverjs-theme .driver-popover-footer button {
+    background-color: var(--primary);
+    color: white;
+    border-radius: 0.5rem;
+    text-shadow: none;
+    border: none;
+}
+
+/* --- ESTILOS COTIZADOR Y CARRITO --- */
+
+/* Range Slider Personalizado */
+.form-range::-webkit-slider-thumb {
+    background: var(--primary);
+}
+
+.form-range::-webkit-slider-runnable-track {
+    background: #E5E7EB;
+}
+
+/* Switches Personalizados */
+.form-check-input:checked {
+    background-color: var(--primary);
+    border-color: var(--primary);
+}
+
+/* Carrito Badge */
+.badge-cart {
+    background-color: var(--secondary);
+    color: white;
+    font-size: 0.7rem;
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translate(25%, -25%);
+}
+
+/* Toast Personalizado */
+.toast-custom {
+    background: var(--white);
+    border-left: 4px solid var(--primary);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+
+/* Animación de entrada al carrito */
+@keyframes slideInRight {
+    from { transform: translateX(100%); }
+    to { transform: translateX(0); }
+}
+
+.cart-item-anim {
+    animation: slideInRight 0.3s ease-out;
+}
+
+/* --- AJUSTES TOAST Y PAGO --- */
+
+/* Toast: Posición Superior para no estorbar */
+.toast-container-custom {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    z-index: 1060; /* Por encima del Offcanvas */
+}
+
+.toast-custom {
+    background: var(--white);
+    border-left: 4px solid var(--primary);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    color: var(--text-main);
+}
+
+/* Tarjeta de Crédito Visual */
+.credit-card-form {
+    background: #F3F4F6;
+    border-radius: 1rem;
+    padding: 1.5rem;
+    border: 1px solid rgba(0,0,0,0.05);
+}
+
+.form-control-payment {
+    border: 1px solid #E5E7EB;
+    border-radius: 0.5rem;
+    padding: 0.75rem;
+    background: white;
+}
+
+.form-control-payment:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.1);
+}
+
+/* Embed de Código en el Modal de Éxito (Estilo Email) */
+.email-preview {
+    background: #FFFFFF;
+    border: 1px solid #E5E7EB;
+    border-radius: 8px;
+    padding: 20px;
+    font-family: 'DM Sans', sans-serif;
+    text-align: left;
+    margin-top: 1rem;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.code-snippet-email {
+    background: #1E1E1E;
+    color: #D4D4D4;
+    padding: 15px;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    overflow-x: auto;
+    border-left: 3px solid var(--primary);
+}
+
+/* --- ELIAN INTELLIGENCE WINDOW (OS STYLE + DOSSIER FIX) --- */
+
+.elian-dock-wrapper {
+    position: fixed;
+    /* Posición inicial por defecto (si no hay localStorage) */
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 9999;
+    font-family: 'DM Sans', sans-serif;
+    filter: drop-shadow(0 20px 50px rgba(0,0,0,0.15));
+    display: flex;
+    flex-direction: column;
+    transition: width 0.3s, height 0.3s; /* NO transicionar top/left para evitar lag al arrastrar */
+}
+
+/* ESTADO 1: COLAPSADO (Botón Pill) */
+.elian-dock-wrapper.collapsed {
+    width: auto !important; /* Forzar auto para el botón */
+    height: auto !important;
+    cursor: pointer;
+    /* Resetear transformaciones manuales al colapsar para centrarlo */
+    top: auto !important;
+    left: 50% !important;
+    bottom: 2rem !important;
+    transform: translateX(-50%) !important;
+}
+
+.elian-dock-wrapper.collapsed .elian-interface {
+    height: 56px;
+    border-radius: 50rem;
+    padding: 0 1.5rem;
+    background: var(--white);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border: 1px solid rgba(124, 58, 237, 0.2);
+    transition: all 0.2s;
+    width: auto;
+}
+
+.elian-dock-wrapper.collapsed:hover .elian-interface {
+    transform: scale(1.02);
+    box-shadow: 0 0 20px rgba(124, 58, 237, 0.3);
+}
+
+/* ESTADO 2: EXPANDIDO (Ventana Flotante) */
+.elian-dock-wrapper.expanded {
+    /* Dimensiones por defecto si no hay historial */
+    width: 400px; 
+    height: 600px;
+}
+
+.elian-interface {
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(25px);
+    width: 100%;
+    height: 100%;
+    border-radius: 1rem;
+    border: 1px solid rgba(124, 58, 237, 0.15);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 0 0 1px rgba(255,255,255,0.5) inset;
+}
+
+/* HEADER ARRASTRABLE */
+.elian-header {
+    padding: 1rem;
+    background: linear-gradient(to bottom, #ffffff, #f9fafb);
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+    cursor: grab; /* Cursor de manita para indicar movimiento */
+    user-select: none;
+    display: none; 
+    justify-content: space-between;
+    align-items: center;
+    flex-shrink: 0;
+}
+.elian-header:active { cursor: grabbing; }
+.elian-dock-wrapper.expanded .elian-header { display: flex; }
+
+/* CONTENIDO INTERNO */
+.elian-view-container {
+    position: relative;
+    flex: 1;
+    overflow: hidden;
+    display: none; /* Oculto en botón */
+}
+.elian-dock-wrapper.expanded .elian-view-container { display: block; }
+
+/* Vistas (Chat vs Dossier) */
+.elian-view {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    display: flex; flex-direction: column;
+    background: #F9FAFB;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+.view-active { transform: translateX(0); opacity: 1; z-index: 2; pointer-events: all; }
+.view-hidden-left { transform: translateX(-100%); opacity: 0; z-index: 1; pointer-events: none; }
+.view-hidden-right { transform: translateX(100%); opacity: 0; z-index: 1; pointer-events: none; }
+
+/* CHAT AREA */
+.elian-content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+/* MENSAJES (Corrección Visual) */
+.msg {
+    max-width: 85%;
+    padding: 12px 18px;
+    border-radius: 16px;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    position: relative;
+    word-wrap: break-word;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+}
+
+.msg-elian {
+    background: #fff;
+    border: 1px solid rgba(0,0,0,0.1);
+    color: var(--text-main);
+    border-bottom-left-radius: 2px;
+    margin-right: auto; /* Alineado a la izquierda */
+}
+
+.msg-user {
+    background: var(--primary);
+    color: white;
+    border-bottom-right-radius: 2px;
+    margin-left: auto; /* Alineado a la derecha */
+    text-align: right;
+}
+
+/* INPUT AREA */
+.elian-input-area {
+    padding: 1rem;
+    background: #fff;
+    border-top: 1px solid rgba(0,0,0,0.06);
+    display: flex;
+    gap: 0.5rem;
+    flex-shrink: 0;
+}
+
+/* RESIZE HANDLE */
+.elian-resize-handle {
+    position: absolute;
+    bottom: 0; right: 0;
+    width: 20px; height: 20px;
+    cursor: nwse-resize;
+    z-index: 100;
+    background: linear-gradient(135deg, transparent 50%, rgba(124,58,237,0.3) 50%);
+    border-bottom-right-radius: 1rem;
+    display: none;
+}
+.elian-dock-wrapper.expanded .elian-resize-handle { display: block; }
+
+/* Elementos internos específicos */
+.elian-trigger-content { display: flex; align-items: center; gap: 10px; width: 100%; height: 100%; }
+.elian-dock-wrapper.expanded .elian-trigger-content { display: none; }
+
+/* Scrollbar */
+.elian-content::-webkit-scrollbar { width: 6px; }
+.elian-content::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.1); border-radius: 10px; }
+
+/* --- INICIO DE BLOQUE RESPONSIVO (CORREGIDO) --- */
+
+.section-hero-spacer {
+    margin-top: 140px;
+    margin-bottom: 100px;
+}
+
+/* DESKTOP (>= 992px) */
+@media (min-width: 992px) {
+    /* Elian Dock: Centrado y Estilo "Isla" */
+    .elian-dock-wrapper.collapsed {
+        left: 50%;
+        bottom: 2rem;
+        right: auto;
+        transform: translateX(-50%);
+    }
+    
+    .elian-dock-wrapper.collapsed .elian-interface {
+        background: rgba(255, 255, 255, 0.95); /* Blanco translúcido */
+        color: var(--text-main);
+        backdrop-filter: blur(10px);
+    }
+    
+    .elian-dock-wrapper.expanded {
+        width: 400px;
+        height: 600px;
+        border-radius: 1rem;
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        border: 1px solid rgba(124, 58, 237, 0.1);
+        left: 50%;
+        top: calc(100vh - 620px);
+        transform: translateX(-50%);
+    }
+
+    .elian-resize-handle {
+        position: absolute;
+        bottom: 0; right: 0;
+        width: 20px; height: 20px;
+        cursor: nwse-resize;
+        display: block;
+        background: linear-gradient(135deg, transparent 50%, rgba(124,58,237,0.3) 50%);
+    }
+}
+
+/* TABLET & MOBILE (< 992px) */
+@media (max-width: 991.98px) {
+    .section-hero-spacer { margin-top: 110px; }
+    main { margin-top: 110px !important; }
+    h1.display-3 { font-size: 2.8rem; }
+    h2.display-4 { font-size: 2.2rem; }
+
+    /* Navbar Mobile */
+    .navbar-collapse {
+        background: rgba(255, 255, 255, 0.98);
+        backdrop-filter: blur(15px);
+        padding: 1.5rem;
+        border-radius: 1rem;
+        margin-top: 1rem;
+        box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        border: 1px solid rgba(124, 58, 237, 0.1);
+    }
+
+    /* Elian: Full Screen App Mode */
+    .elian-dock-wrapper.expanded {
+        position: fixed;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        bottom: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
+        transform: none !important;
+        border-radius: 0;
+        z-index: 10000;
+        margin: 0;
+    }
+    
+    .elian-dock-wrapper.expanded .elian-interface {
+        border-radius: 0;
+        border: none;
+    }
+    
+    .elian-resize-handle { display: none; }
+    .elian-header { padding: 1rem; background: #fff; }
+    
+    /* Botón flotante siempre a la derecha en móvil */
+    .elian-dock-wrapper.collapsed {
+        left: auto;
+        right: 1.5rem;
+        bottom: 2rem;
+        transform: none;
+    }
+}
+
+/* MÓVIL (< 576px) - CORRECCIÓN CRÍTICA DE CORTE */
+@media (max-width: 575.98px) {
+    h1.display-3 { font-size: 2.2rem; }
+    .btn-lg { width: 100%; display: block; margin-bottom: 0.5rem; }
+
+    /* Fix para el botón flotante Elian en pantallas estrechas */
+    .elian-dock-wrapper.collapsed {
+        right: 1rem; /* Reducir margen derecho */
+        bottom: max(1.5rem, env(safe-area-inset-bottom)); /* Evitar corte abajo por barra iOS */
+        max-width: calc(100% - 2rem); /* Asegurar que no exceda ancho pantalla */
+    }
+
+    .elian-dock-wrapper.collapsed .elian-interface {
+        padding: 0 12px; /* Reducir padding interno */
+        height: 50px; /* Reducir altura ligeramente */
+    }
+
+    .elian-trigger-content span {
+        font-size: 0.85rem; /* Reducir fuente un poco */
+        white-space: nowrap; /* PROHIBIDO envolver texto */
+    }
+    
+    /* Input área con padding seguro para iOS */
+    .elian-input-area {
+        padding-bottom: max(1rem, env(safe-area-inset-bottom));
+    }
+}
+
+/* --- SIMULACIÓN DE CHAT & OFFCANVAS --- */
+.offcanvas-header { background: var(--white); padding: 1.5rem 2rem; }
+.offcanvas-title { font-family: 'Space Grotesk', sans-serif; color: var(--primary); font-weight: 700; font-size: 1.35rem; }
+.offcanvas-body { padding: 2rem; background-color: #fff; }
+.chat-simulation-container { display: flex; flex-direction: column; gap: 1.5rem; margin-bottom: 2.5rem; }
+.sim-card { border-radius: 12px; padding: 1.5rem; position: relative; transition: transform 0.3s ease; }
+.sim-card-user { background-color: #F9FAFB; border: 1px solid #F3F4F6; color: var(--text-main); }
+.sim-label-user { font-size: 0.85rem; color: var(--text-muted); font-weight: 500; margin-bottom: 0.5rem; display: block; }
+.sim-card-bot { background-color: var(--white); border: 1px solid var(--primary); box-shadow: 0 10px 30px -10px rgba(124, 58, 237, 0.15); }
+.sim-label-bot { font-size: 0.9rem; color: var(--primary); font-weight: 700; margin-bottom: 0.5rem; display: block; }
+.sim-text { font-size: 1rem; line-height: 1.6; color: var(--text-main); margin: 0; }
+.sim-text strong { color: var(--text-main); font-weight: 700; }
+.btn-block-custom { display: block; width: 100%; padding: 1rem; font-size: 1.1rem; background: linear-gradient(90deg, var(--primary), #8B5CF6); border: none; }
+.btn-block-custom:hover { background: linear-gradient(90deg, var(--primary-hover), var(--primary)); box-shadow: 0 10px 20px rgba(124, 58, 237, 0.3); }
+
+/* --- ELIAN PREVIEW BUBBLE --- */
+.elian-preview-bubble {
+    position: absolute;
+    bottom: 75px; left: 50%; transform: translateX(-50%) translateY(10px);
+    background: var(--white); padding: 12px 20px; border-radius: 16px;
+    box-shadow: 0 10px 25px -5px rgba(124, 58, 237, 0.25); border: 1px solid rgba(124, 58, 237, 0.2);
+    width: max-content; max-width: 280px; opacity: 0; visibility: hidden;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); z-index: 1030;
+    font-size: 0.9rem; color: var(--text-main); display: flex; align-items: center; gap: 10px; pointer-events: none;
+}
+.elian-preview-bubble.visible { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); pointer-events: auto; cursor: pointer; }
+.elian-preview-bubble::after { content: ''; position: absolute; bottom: -6px; left: 50%; transform: translateX(-50%) rotate(45deg); width: 12px; height: 12px; background: var(--white); border-right: 1px solid rgba(124, 58, 237, 0.2); border-bottom: 1px solid rgba(124, 58, 237, 0.2); }
+
+@media (max-width: 991.98px) {
+    .elian-preview-bubble { left: auto; right: 0; transform: translateY(10px); }
+    .elian-preview-bubble.visible { transform: translateY(0); }
+    .elian-preview-bubble::after { left: auto; right: 20px; transform: rotate(45deg); }
+}

@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PokéDex | Anime UI v3.0</title>
+    
+    <!-- Bootstrap 5.0.2 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    
+    <!-- Fonts: Fredoka (Títulos) y Poppins (Cuerpo) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/ejercicio30.css">
+</head>
+<body>
+
+    <!-- Overlay de Carga -->
+    <div id="loader-overlay" class="loader-overlay">
+        <div class="pokeball-loader">
+            <div class="pokeball-top"></div>
+            <div class="pokeball-middle"></div>
+            <div class="pokeball-bottom"></div>
+        </div>
+        <div class="loader-text">SYNCING DATABASE...</div>
+    </div>
+
+    <!-- Layout Principal -->
+    <div class="app-container">
+        
+        <!-- 1. Sidebar (Nav) -->
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/9/98/International_Pok%C3%A9mon_logo.svg" alt="Pokemon Logo" class="brand-logo">
+            </div>
+
+            <!-- Buscador -->
+            <div class="search-container">
+                <div class="search-box">
+                    <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                    <input type="text" id="sidebar-search" placeholder="Buscar..." autocomplete="off">
+                </div>
+            </div>
+
+            <div class="sidebar-label">TIPOS ELEMENTALES</div>
+            
+            <div class="type-list" id="type-menu">
+                <!-- Se llenará dinámicamente con JS -->
+            </div>
+        </nav>
+
+        <!-- Contenedor Derecho (Scrollable Wrapper) -->
+        <div class="content-wrapper">
+            
+            <!-- 2. Header (Sticky) -->
+            <header class="top-header">
+                <div class="header-left">
+                    <div class="type-icon-wrapper" id="current-type-icon">
+                        <i class="fa-solid fa-fire"></i>
+                    </div>
+                    <div>
+                        <h1 class="page-title" id="current-type-title">Fuego</h1>
+                        <span class="subtitle">System Status: Online</span>
+                    </div>
+                </div>
+                
+                <div class="header-controls">
+                    <!-- Switch de Vistas (Nuevo) -->
+                    <div class="view-switch-container">
+                        <button class="view-btn active" id="btn-view-grid" title="Grid View">
+                            <i class="fa-solid fa-border-all"></i>
+                        </button>
+                        <button class="view-btn" id="btn-view-list" title="List View">
+                            <i class="fa-solid fa-list-ul"></i>
+                        </button>
+                    </div>
+
+                    <div class="control-box">
+                        <label for="limit-input"><i class="fa-solid fa-database me-1"></i> Límites:</label>
+                        <div class="input-wrapper">
+                            <input type="number" id="limit-input" value="20" min="1" max="100">
+                            <button id="btn-update" class="btn-refresh">
+                                <i class="fa-solid fa-rotate-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- 3. Main Content -->
+            <main class="main-screen">
+                <div class="bg-pattern"></div>
+                <div class="container-fluid p-4">
+                    
+                    <!-- VISTA GRID (Original) -->
+                    <div class="row g-4 fade-in-section" id="pokemon-container">
+                        <!-- Las tarjetas se inyectan aquí -->
+                    </div>
+
+                    <!-- VISTA LISTA (Requerimiento Nuevo) -->
+                    <div class="row hidden fade-in-section" id="list-view-wrapper">
+                        <div class="col-12">
+                            <div class="glass-panel">
+                                <div class="panel-header">
+                                    <h5 class="m-0"><i class="fa-solid fa-server me-2"></i>DATA LOG</h5>
+                                    <span class="badge bg-dark">READ ONLY</span>
+                                </div>
+                                <!-- Aquí está el UL requerido -->
+                                <ul id="pokemon-list" class="list-group list-group-flush custom-anime-list">
+                                    <!-- Los LI se inyectan aquí -->
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </main>
+
+            <!-- 4. Footer (Estático al final del scroll) -->
+            <footer class="game-footer">
+                <div class="footer-info">
+                    <i class="fa-solid fa-wifi"></i>
+                    <span>Conexión: <strong>Estable</strong></span>
+                </div>
+                <div class="footer-credits">
+                    <span>Anime UI v3.0 | Bootstrap 5.0.2</span>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+    <!-- DOCK DE COMPARACIÓN (Flotante) -->
+    <div id="comparator-dock" class="comparator-dock hidden">
+        <div class="dock-content">
+            <span class="dock-title">COMPARADOR</span>
+            <div class="dock-slots" id="dock-slots">
+                <!-- Slots vacíos o llenos -->
+            </div>
+            <button id="btn-compare-action" class="btn-action" disabled>
+                ANALIZAR VS
+            </button>
+            <button id="btn-clear-compare" class="btn-clear">
+                <i class="fa-solid fa-trash"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- MODAL DE DETALLES -->
+    <div class="custom-modal-backdrop hidden" id="detail-modal">
+        <div class="custom-modal-card">
+            <button class="modal-close" id="close-detail-modal"><i class="fa-solid fa-xmark"></i></button>
+            <div class="modal-header-visual" id="modal-header-bg">
+                <div class="modal-circle-bg"></div>
+                <img src="" alt="Pokemon" class="modal-poke-img" id="modal-img">
+            </div>
+            <div class="modal-body-content">
+                <h2 id="modal-name" class="modal-title">Bulbasaur</h2>
+                <div class="modal-types" id="modal-types">
+                    <!-- Badges -->
+                </div>
+                
+                <div class="stats-container">
+                    <h4 class="stats-label">ANÁLISIS DE ESTADÍSTICAS</h4>
+                    <div id="modal-stats-list">
+                        <!-- Barras de progreso JS -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL DE COMPARACIÓN -->
+    <div class="custom-modal-backdrop hidden" id="comparison-modal">
+        <div class="custom-modal-card wide">
+            <button class="modal-close" id="close-comparison-modal"><i class="fa-solid fa-xmark"></i></button>
+            <div class="comparison-grid">
+                <!-- Columna Pokemon 1 -->
+                <div class="comp-col" id="comp-p1">
+                    <!-- JS Injected -->
+                </div>
+                
+                <!-- Columna VS (Stats Centrales) -->
+                <div class="comp-stats-col" id="comp-stats">
+                    <!-- JS Injected -->
+                </div>
+
+                <!-- Columna Pokemon 2 -->
+                <div class="comp-col" id="comp-p2">
+                    <!-- JS Injected -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    
+    <!-- Custom JS -->
+    <script src="js/ejercicio30.js"></script>
+</body>
+</html>
